@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="lineage tracing" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="lineage tracing a little better">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +74,7 @@
       <workItem from="1653070954420" duration="1623000" />
       <workItem from="1653147425016" duration="599000" />
       <workItem from="1653432104144" duration="2374000" />
-      <workItem from="1653505342303" duration="3472000" />
+      <workItem from="1653505342303" duration="5469000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -130,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653579947337</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="lineage tracing a little better">
+      <created>1653589205509</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653589205510</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +161,8 @@
     <MESSAGE value="derivation of avg offspring based on fitness" />
     <MESSAGE value="more shtuff" />
     <MESSAGE value="lineage tracing" />
-    <option name="LAST_COMMIT_MESSAGE" value="lineage tracing" />
+    <MESSAGE value="lineage tracing a little better" />
+    <option name="LAST_COMMIT_MESSAGE" value="lineage tracing a little better" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
