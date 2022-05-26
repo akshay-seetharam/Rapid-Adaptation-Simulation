@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="more shtuff">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rapid-adaptation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/rapid-adaptation.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="more shtuff" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +72,7 @@
       <workItem from="1653070954420" duration="1623000" />
       <workItem from="1653147425016" duration="599000" />
       <workItem from="1653432104144" duration="2374000" />
-      <workItem from="1653505342303" duration="2470000" />
+      <workItem from="1653505342303" duration="3082000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -119,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653539182573</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="more shtuff">
+      <created>1653579405809</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653579405811</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
