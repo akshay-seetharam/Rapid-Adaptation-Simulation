@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="derivation of avg offspring based on fitness">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="more shtuff">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rapid-adaptation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/rapid-adaptation.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +75,7 @@
       <workItem from="1653070954420" duration="1623000" />
       <workItem from="1653147425016" duration="599000" />
       <workItem from="1653432104144" duration="2374000" />
-      <workItem from="1653505342303" duration="1242000" />
+      <workItem from="1653505342303" duration="2470000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -114,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653505989559</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="more shtuff">
+      <created>1653539182572</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653539182573</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creation" />
     <MESSAGE value="derivation of avg offspring based on fitness" />
-    <option name="LAST_COMMIT_MESSAGE" value="derivation of avg offspring based on fitness" />
+    <MESSAGE value="more shtuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="more shtuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
