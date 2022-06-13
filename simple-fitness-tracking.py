@@ -34,36 +34,40 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
 
     fitnesses.append(sampled)
 
-
 if __name__=='__main__':
-    # This uses the format of only keeping track of fitness quantities, disregarding the organism and genome level
-    population = 100
-    generations = 150
-    starting_fitness = 0.5
-    Ub = 0.01 # probability of beneficial mutation
-    b = 0.01 # affect of beneficial mutation to fitness
-    Ud = 0.02 # probability of detrimental mutation
-    d = -1 * 0.05 # affect of detrimental mutation to fitness
-
-
-    fitnesses = [{starting_fitness: population}] # key: value, fitness: # of individuals with fitness
 
     start_time = time.time()
 
-    for i in range(generations):
-        next_gen(population, fitnesses, Ub, b, Ud, d)
-        print(f'gen {i} done')
+    population = 1000
+    generations = 150
+    starting_fitness = 0.5
+    b = 0.01
+    d =- -1 * 0.05
 
-    mean_fitnesses = []
-    for generation in fitnesses:
-        # print(generation)
-        mean_fitnesses.append(sum([fitness * proportion for fitness, proportion in generation.items()]))
+    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 10**-2, 3)]
+    Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 3)]
 
+    plt.figure(figsize=(8, 6), dpi=80)
+
+    fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
+    # set the spacing between subplots
+    plt.subplots_adjust(wspace=0.5,
+                        hspace=0.5)
+    plt.suptitle(f'Mean Fitness vs. Generation\n b={b}, d={d}')
+    for i, Ub in enumerate(Ubs):
+        for j, Ud in enumerate(Uds):
+            fitnesses = [{starting_fitness: population}]  # key: value, fitness: # of individuals with fitness
+
+            for _ in range(generations):
+                next_gen(population, fitnesses, Ub, b, Ud, d)
+                print(f'gen {_} done')
+
+            mean_fitnesses = []
+            for generation in fitnesses:
+                # print(generation)
+                mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
+
+            axs[i][j].scatter(range(len(fitnesses)), mean_fitnesses)
+            axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
+    plt.savefig(f'imgs/{generations} generations sfp')
     print("--- %s seconds ---" % (time.time() - start_time))
-
-    plt.scatter(range(len(fitnesses)), mean_fitnesses)
-    plt.suptitle('Mean Fitness vs. Generation')
-    plt.title(f'Ub={Ub}, b={b}, Ud={Ud}, d={d}')
-    plt.ylabel('Population Mean Fitness')
-    plt.xlabel('Generation')
-    plt.show()
