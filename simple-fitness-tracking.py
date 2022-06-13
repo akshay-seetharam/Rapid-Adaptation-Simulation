@@ -53,7 +53,7 @@ if __name__=='__main__':
     # set the spacing between subplots
     plt.subplots_adjust(wspace=0.5,
                         hspace=0.5)
-    plt.suptitle(f'Mean Fitness vs. Generation\n b={b}, d={d}')
+    plt.suptitle(f'Mean Fitness vs. Generation (b={b}, d={d})')
     for i, Ub in enumerate(Ubs):
         for j, Ud in enumerate(Uds):
             fitnesses = [{starting_fitness: population}]  # key: value, fitness: # of individuals with fitness
