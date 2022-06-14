@@ -3,7 +3,7 @@ from math import exp, sqrt
 import time
 from matplotlib import pyplot as plt
 import numpy as np
-from pprint import pprint
+from alive_progress import alive_bar
 
 def next_gen(population, fitnesses, Ub, b, Ud, d):
     reproduced = {}
@@ -21,12 +21,12 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
         try:
             sampled[fitness + b] += beneficial_mutations
         except KeyError as ke:
-            print(ke)
+            # print(ke)
             sampled[fitness + b] = beneficial_mutations
         try:
             sampled[fitness + d] += detrimental_mutations
         except KeyError as ke:
-            print(ke)
+            # print(ke)
             sampled[fitness + d] = detrimental_mutations
         sampled[fitness] = max(0, reproduced[fitness] - (beneficial_mutations + detrimental_mutations))
         # pprint(sampled)
@@ -57,16 +57,17 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
                 fitnesses = [{starting_fitness: population}]
                 for _ in range(generations):
                     next_gen(population, fitnesses, Ub, b, Ud, d)
+                    yield
                 mean_fitnesses = []
                 for generation in fitnesses:
                     mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
                 if plot:
                     axs[i][j].plot(range(len(fitnesses)), mean_fitnesses, color='gray')
                     axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
+
             x = np.linspace(0, generations, 1000)
             y1 = [population * Ub * b**2 * i + starting_fitness for i in x]
             y2 = [(b**2 * ((2 * np.log(population * b) - np.log(b / Ub)) / (np.log(b / Ub))**2)) * i + starting_fitness for i in x]
-
             axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red')
             axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
             axs[i][j].legend()
@@ -81,15 +82,18 @@ if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 30
+    population = 5
     generations = 75
     starting_fitness = 0.5
     b = 0.01
-    d = -0.0 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
+    d = -0.05 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
     Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-2, 10**-1, 2)]
     Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
-    runs = 15
-    simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True)
+    runs = 10
+    with alive_bar(runs * len(Ubs) * len(Uds) * generations) as bar:
+        for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True):
+            # print(i)
+            bar()
 
     print("--- %s seconds ---" % (time.time() - start_time))

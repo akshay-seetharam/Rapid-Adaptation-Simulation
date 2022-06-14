@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="binomial and wrapping simulation in function">
-      <change afterPath="$PROJECT_DIR$/imgs/150 generations, 15 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/10 generations, 15 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/10 generations, 15 runs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 15 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/75 generations, 15 runs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simple-fitness-tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple-fitness-tracking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
