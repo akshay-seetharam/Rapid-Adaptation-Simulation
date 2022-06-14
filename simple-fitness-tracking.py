@@ -28,7 +28,7 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
         except KeyError as ke:
             print(ke)
             sampled[fitness + d] = detrimental_mutations
-        sampled[fitness] = reproduced[fitness] - (beneficial_mutations + detrimental_mutations)
+        sampled[fitness] = max(0, reproduced[fitness] - (beneficial_mutations + detrimental_mutations))
         # pprint(sampled)
 
     # bring population back down to simulate a sample from one flask being drawn into another maintaining constant population
@@ -45,13 +45,15 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
 
 def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=False):
     if plot:
-        plt.figure(figsize=(50, 50), dpi=80)
+        plt.figure(figsize=(1000, 1000), dpi=80)
         fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
         plt.subplots_adjust(wspace=0.5, hspace=0.5)
-        plt.suptitle(f'Mean Fitness vs. Generation (pop.={population}, b={b}, d={d}')
-    for run in range(runs):
-        for i, Ub in enumerate(Ubs):
-            for j, Ud in enumerate(Uds):
+        plt.suptitle(f'Mean Fitness vs. Generation (pop.={population}, b={b}, d=–{-1 * d})')
+
+    for i, Ub in enumerate(Ubs):
+        for j, Ud in enumerate(Uds):
+            avgs_of_avgs = []
+            for run in range(runs):
                 fitnesses = [{starting_fitness: population}]
                 for _ in range(generations):
                     next_gen(population, fitnesses, Ub, b, Ud, d)
@@ -59,9 +61,19 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
                 for generation in fitnesses:
                     mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
                 if plot:
-                    axs[i][j].plot(range(len(fitnesses)), mean_fitnesses)
+                    axs[i][j].plot(range(len(fitnesses)), mean_fitnesses, color='gray')
                     axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
-        pprint(f'Run #{run} done')
+            x = np.linspace(0, generations, 1000)
+            y1 = [population * Ub * b**2 * i + starting_fitness for i in x]
+            y2 = [(b**2 * ((2 * np.log(population * b) - np.log(b / Ub)) / (np.log(b / Ub))**2)) * i + starting_fitness for i in x]
+
+            axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red')
+            axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
+            axs[i][j].legend()
+
+
+
+            print(f'Run #{run} done for Ub = {Ub} and Ud = –{-1 * Ud}')
     if plot:
         plt.savefig(f'imgs/{generations} generations, {runs} runs')
 
@@ -69,12 +81,12 @@ if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 50
-    generations = 10
+    population = 30
+    generations = 75
     starting_fitness = 0.5
     b = 0.01
-    d = -1 * 0.05
-    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 10**-2, 2)]
+    d = -0.0 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
+    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-2, 10**-1, 2)]
     Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
     runs = 15
