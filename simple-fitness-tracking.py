@@ -15,59 +15,69 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
     # mutations as a binomial random variable
     sampled = {}
     for fitness in reproduced:
-        sampled[fitness + b] = Ub * reproduced[fitness] # TODO: one-by-one sampling is exactly the same as binomial
-        # sampled[fitness + b] = round(np.random.normal(reproduced[fitness] * Ub, sqrt(reproduced[fitness]*Ub*(1-Ub))))
-        sampled[fitness + d] = Ud * reproduced[fitness]
-        # sampled[fitness + d] = round(np.random.normal(reproduced[fitness] * Ud, sqrt(reproduced[fitness]*Ud*(1-Ud))))
-        sampled[fitness] = reproduced[fitness] - (sampled[fitness + b] + sampled[fitness + d])
+        # sampled[fitness + b] = Ub * reproduced[fitness] # TODO: one-by-one sampling is exactly the same as binomial
+        beneficial_mutations = np.random.binomial(reproduced[fitness], Ub)
+        detrimental_mutations = np.random.binomial(reproduced[fitness], Ud)
+        try:
+            sampled[fitness + b] += beneficial_mutations
+        except KeyError as ke:
+            print(ke)
+            sampled[fitness + b] = beneficial_mutations
+        try:
+            sampled[fitness + d] += detrimental_mutations
+        except KeyError as ke:
+            print(ke)
+            sampled[fitness + d] = detrimental_mutations
+        sampled[fitness] = reproduced[fitness] - (beneficial_mutations + detrimental_mutations)
         # pprint(sampled)
 
     # bring population back down to simulate a sample from one flask being drawn into another maintaining constant population
     try:
         correction_factor = 1.0 * population / sum(sampled.values())
     except Exception as e:
-        print(e)
-        print(sampled)
+        # print(e)
+        # print(sampled)
         return
     for fitness in sampled:
         sampled[fitness] *= correction_factor
 
     fitnesses.append(sampled)
 
+def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=False):
+    if plot:
+        plt.figure(figsize=(50, 50), dpi=80)
+        fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
+        plt.subplots_adjust(wspace=0.5, hspace=0.5)
+        plt.suptitle(f'Mean Fitness vs. Generation (pop.={population}, b={b}, d={d}')
+    for run in range(runs):
+        for i, Ub in enumerate(Ubs):
+            for j, Ud in enumerate(Uds):
+                fitnesses = [{starting_fitness: population}]
+                for _ in range(generations):
+                    next_gen(population, fitnesses, Ub, b, Ud, d)
+                mean_fitnesses = []
+                for generation in fitnesses:
+                    mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
+                if plot:
+                    axs[i][j].plot(range(len(fitnesses)), mean_fitnesses)
+                    axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
+        pprint(f'Run #{run} done')
+    if plot:
+        plt.savefig(f'imgs/{generations} generations, {runs} runs')
+
 if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 1000
-    generations = 150
+    population = 50
+    generations = 10
     starting_fitness = 0.5
     b = 0.01
-    d =- -1 * 0.05
+    d = -1 * 0.05
+    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 10**-2, 2)]
+    Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
-    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 10**-2, 3)]
-    Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 3)]
+    runs = 15
+    simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True)
 
-    plt.figure(figsize=(8, 6), dpi=80)
-
-    fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
-    # set the spacing between subplots
-    plt.subplots_adjust(wspace=0.5,
-                        hspace=0.5)
-    plt.suptitle(f'Mean Fitness vs. Generation (b={b}, d={d})')
-    for i, Ub in enumerate(Ubs):
-        for j, Ud in enumerate(Uds):
-            fitnesses = [{starting_fitness: population}]  # key: value, fitness: # of individuals with fitness
-
-            for _ in range(generations):
-                next_gen(population, fitnesses, Ub, b, Ud, d)
-                print(f'gen {_} done')
-
-            mean_fitnesses = []
-            for generation in fitnesses:
-                # print(generation)
-                mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
-
-            axs[i][j].scatter(range(len(fitnesses)), mean_fitnesses)
-            axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
-    plt.savefig(f'imgs/{generations} generations sfp')
     print("--- %s seconds ---" % (time.time() - start_time))
