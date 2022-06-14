@@ -3,7 +3,7 @@ from math import exp, sqrt
 import time
 from matplotlib import pyplot as plt
 import numpy as np
-from alive_progress import alive_bar
+import alive_progress
 
 def next_gen(population, fitnesses, Ub, b, Ud, d):
     reproduced = {}
@@ -91,7 +91,7 @@ if __name__=='__main__':
     Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
     runs = 10
-    with alive_bar(runs * len(Ubs) * len(Uds) * generations) as bar:
+    with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
         for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True):
             # print(i)
             bar()

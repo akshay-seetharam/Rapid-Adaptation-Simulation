@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="binomial and wrapping simulation in function">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="progress bar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 15 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/75 generations, 15 runs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 10 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/75 generations, 10 runs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simple-fitness-tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple-fitness-tracking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655240831125</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="progress bar">
+      <created>1655248461579</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1655248461579</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +285,8 @@
     <MESSAGE value="simple fitness tracking w/o randomness" />
     <MESSAGE value="subplots" />
     <MESSAGE value="binomial and wrapping simulation in function" />
-    <option name="LAST_COMMIT_MESSAGE" value="binomial and wrapping simulation in function" />
+    <MESSAGE value="progress bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="progress bar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$simple_fitness_tracking.coverage" NAME="simple-fitness-tracking Coverage Results" MODIFIED="1655239334181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
