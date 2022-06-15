@@ -1,10 +1,11 @@
 import random
-from math import exp, sqrt
+from math import exp, sqrt, sin, cos, pi
 import time
 from matplotlib import pyplot as plt
 import numpy as np
 import alive_progress
 from alive_progress.styles import showtime, Show
+
 
 def next_gen(population, fitnesses, Ub, b, Ud, d):
     reproduced = {}
@@ -44,7 +45,8 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
 
     fitnesses.append(sampled)
 
-def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=False):
+
+def simulate(population, generations, b, d, Ubs, Uds, runs, traits, starting_traits, fitness_function, plot=False):
     if plot:
         plt.figure(figsize=(1000, 1000), dpi=80)
         fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
@@ -55,13 +57,14 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
         for j, Ud in enumerate(Uds):
             avgs_of_avgs = []
             for run in range(runs):
-                fitnesses = [{starting_fitness: population}]
+                trait_values = [[{starting_traits[i]: population} for i in range(traits)]]
                 for _ in range(generations):
-                    next_gen(population, fitnesses, Ub, b, Ud, d)
+                    next_gen(population, trait_values, Ub, b, Ud, d)
                     yield
-                mean_fitnesses = []
-                for generation in fitnesses:
+                mean_trait_values = []
+                for generation in trait_values:
                     mean_fitnesses.append(sum([fitness * size / population for fitness, size in generation.items()]))
+                    # TODO: append last generation of mean trait values
                 if plot:
                     differences = [0]
                     k = 1
@@ -73,33 +76,45 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
                     axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
 
             x = np.linspace(0, generations, 1000)
-            y1 = [population * Ub * b**2 * i for i in x]
-            y2 = [(b**2 * ((2 * np.log(population * b) - np.log(b / Ub)) / (np.log(b / Ub))**2)) * i for i in x]
+            y1 = [population * Ub * b ** 2 * i for i in x]
+            y2 = [(b ** 2 * ((2 * np.log(population * b) - np.log(b / Ub)) / (np.log(b / Ub)) ** 2)) * i for i in x]
             axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red')
             axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
-            axs[i][j].legend()
+            if i == 0 and j == 0:
+                axs[i][j].legend()
 
-
-
-            print(f'Run #{run} done for Ub = {Ub} and Ud = –{-1 * Ud}')
+            # print(f'Run #{run} done for Ub = {Ub} and Ud = –{-1 * Ud}')
     if plot:
         plt.savefig(f'imgs/{generations} generations, {runs} runs')
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
 
     start_time = time.time()
 
-    population = 100
-    generations = 30
-    starting_fitness = 0.5
-    b = 0.01
-    d = -0.0 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
-    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-2, 10**-1, 2)]
-    Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
+    population = 50
+    generations = 60
 
-    runs = 15
+    b = 0.01
+    d = -0.02  # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
+    Ubs = [round(i * 1000) / 1000 for i in np.linspace(0.001, 0.1, 2)]
+    Uds = [round(i * 100) / 100 for i in np.linspace(0.001, 0.1, 2)]
+
+    traits = 1  # number of quantitative traits that impact fitness
+    starting_traits = [0.5]
+    def bimodal(trait):
+        return sin(6 * pi * trait) - cos(12 * pi * trait)  # fitness(x) = sin(3pi*x) - cos(6pi * x)
+    x = np.linspace(0, 1, 1000)
+    y = [bimodal(i) for i in x]
+    plt.plot(x, y)
+    plt.xlabel("Trait")
+    plt.ylabel("Fitness")
+    plt.savefig("imgs/Fitness Against Trait Expression")
+    plt.clf()
+
+    runs = 5
     with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
-        for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True):
+        for i in simulate(population, generations, b, d, Ubs, Uds, runs, traits, starting_traits, bimodal, True):
             # print(i)
             bar()
     print("--- %s seconds ---" % (time.time() - start_time))

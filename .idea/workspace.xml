@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="better progress bar #2">
-      <change afterPath="$PROJECT_DIR$/imgs/100 generations, 15 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/200 generations, 15 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/3 generations, 1 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/75 generations, 1 runs.png" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="plot difference in mean fitness instead of total fitness">
+      <change afterPath="$PROJECT_DIR$/imgs/150 generations, 15 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/150 generations, 5 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/60 generations, 5 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/Fitness Against Trait Expression.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapid-adaptation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/rapid-adaptation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simple-fitness-tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple-fitness-tracking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +135,7 @@
       <workItem from="1654745986354" duration="12043000" />
       <workItem from="1654877336096" duration="14187000" />
       <workItem from="1655236469564" duration="8029000" />
-      <workItem from="1655249676744" duration="4454000" />
+      <workItem from="1655249676744" duration="12209000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -276,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655249275744</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="plot difference in mean fitness instead of total fitness">
+      <created>1655304312109</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1655304312109</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +315,8 @@
     <MESSAGE value="binomial and wrapping simulation in function" />
     <MESSAGE value="progress bar" />
     <MESSAGE value="better progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="better progress bar" />
+    <MESSAGE value="plot difference in mean fitness instead of total fitness" />
+    <option name="LAST_COMMIT_MESSAGE" value="plot difference in mean fitness instead of total fitness" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$simple_fitness_tracking.coverage" NAME="simple-fitness-tracking Coverage Results" MODIFIED="1655239334181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
