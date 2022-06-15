@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="better progress bar">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="better progress bar #2">
+      <change afterPath="$PROJECT_DIR$/imgs/100 generations, 15 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/200 generations, 15 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/3 generations, 1 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/75 generations, 1 runs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 10 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/75 generations, 10 runs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple-fitness-tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple-fitness-tracking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +62,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.simple-fitness-tracking">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python">
@@ -129,6 +134,7 @@
       <workItem from="1654745986354" duration="12043000" />
       <workItem from="1654877336096" duration="14187000" />
       <workItem from="1655236469564" duration="8029000" />
+      <workItem from="1655249676744" duration="4454000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -263,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655248988057</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="better progress bar">
+      <created>1655249275744</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1655249275744</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
