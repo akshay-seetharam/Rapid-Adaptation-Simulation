@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="plot difference in mean fitness instead of total fitness">
-      <change afterPath="$PROJECT_DIR$/imgs/150 generations, 15 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/150 generations, 5 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/60 generations, 5 runs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/Fitness Against Trait Expression.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rapid-adaptation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/rapid-adaptation.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-fitness-tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple-fitness-tracking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
