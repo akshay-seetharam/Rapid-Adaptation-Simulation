@@ -74,10 +74,11 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
 
             x = np.linspace(0, generations, 1000)
             y1 = [population * Ub * b**2 * i for i in x]
-            y2 = [(b**2 * ((2 * np.log(population * b) - np.log(b / Ub)) / (np.log(b / Ub))**2)) * i for i in x]
+            y2 = [(b**2 * ((2 * np.log(population * b) - (np.log(b) - np.log(Ub))) / (np.log(b) - np.log(Ub)))) * i for i in x]
             axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red')
-            axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
-            axs[i][j].legend()
+            # axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
+            if i == 0 and j == 0:
+                axs[i][j].legend()
 
 
 
@@ -89,15 +90,15 @@ if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 100
-    generations = 30
+    population = 10 ** 5
+    generations = 150
     starting_fitness = 0.5
     b = 0.01
     d = -0.0 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
-    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-2, 10**-1, 2)]
+    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-4, 0.3, 2)]
     Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
-    runs = 15
+    runs = 5
     with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
         for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True):
             # print(i)
