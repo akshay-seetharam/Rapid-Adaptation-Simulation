@@ -101,7 +101,7 @@ if __name__ == '__main__':
     Uds = [round(i * 100) / 100 for i in np.linspace(0.001, 0.1, 2)]
 
     traits = 1  # number of quantitative traits that impact fitness
-    starting_traits = [0.5]
+    starting_traits = [0.5] # starting values of traits
     def bimodal(trait):
         return sin(6 * pi * trait) - cos(12 * pi * trait)  # fitness(x) = sin(3pi*x) - cos(6pi * x)
     x = np.linspace(0, 1, 1000)
