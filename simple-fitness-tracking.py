@@ -6,11 +6,22 @@ import numpy as np
 import alive_progress
 from alive_progress.styles import showtime, Show
 
-def next_gen(population, fitnesses, Ub, b, Ud, d):
+def fitness_function(fitness):
+    """
+    Outputs effective fitness given the fitness variable; effectively, this allows there to be a rugged fitness landscape
+    For example, the fitness function y = sigmoid(x) would create populations that tend towards higher fitnesses but with logistic growth
+    In contrast, trigonometric functions may create populations that diverge in their fitnesses as sub-populations tend towards different local extrema
+    """
+    return fitness
+
+def next_gen(population, fitnesses, Ub, b, Ud, d, fitness_function):
+    """
+    TODO: docstring explanation of method
+    """
     reproduced = {}
     for fitness in fitnesses[-1]:
-        # have the bacteria grow by f(t) = e^xt
-        reproduced[fitness] = fitnesses[-1][fitness] * exp(fitness)
+        # have the bacteria grow by f(t) = e^(f(x)*t)
+        reproduced[fitness] = fitnesses[-1][fitness] * exp(fitness_function(fitness))
     # mutate some of the bacteria positively and some negatively
     # treating each bacteria's mutation as a bernoulli random event leads to the population's
     # mutations as a binomial random variable
@@ -44,7 +55,7 @@ def next_gen(population, fitnesses, Ub, b, Ud, d):
 
     fitnesses.append(sampled)
 
-def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=False):
+def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fitness_function, plot=False):
     if plot:
         plt.figure(figsize=(1000, 1000), dpi=80)
         fig, axs = plt.subplots(nrows=len(Ubs), ncols=len(Uds))
@@ -57,7 +68,7 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
             for run in range(runs):
                 fitnesses = [{starting_fitness: population}]
                 for _ in range(generations):
-                    next_gen(population, fitnesses, Ub, b, Ud, d)
+                    next_gen(population, fitnesses, Ub, b, Ud, d, fitness_function)
                     yield
                 mean_fitnesses = []
                 for generation in fitnesses:
@@ -75,7 +86,7 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, pl
             x = np.linspace(0, generations, 1000)
             y1 = [population * Ub * b**2 * i for i in x]
             y2 = [(b**2 * ((2 * np.log(population * b) - (np.log(b) - np.log(Ub))) / (np.log(b) - np.log(Ub)))) * i for i in x]
-            axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red')
+            # axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red') These lines plot predicted regime models from Desai & Fisher
             # axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
             if i == 0 and j == 0:
                 axs[i][j].legend()
@@ -90,7 +101,7 @@ if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 10 ** 5
+    population = 10 ** 2
     generations = 150
     starting_fitness = 0.5
     b = 0.01
@@ -98,9 +109,9 @@ if __name__=='__main__':
     Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-4, 0.3, 2)]
     Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
 
-    runs = 5
+    runs = 1
     with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
-        for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, plot=True):
+        for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fitness_function=fitness_function, plot=True):
             # print(i)
             bar()
     print("--- %s seconds ---" % (time.time() - start_time))
