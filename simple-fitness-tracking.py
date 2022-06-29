@@ -12,7 +12,7 @@ def fitness_function(fitness):
     For example, the fitness function y = sigmoid(x) would create populations that tend towards higher fitnesses but with logistic growth
     In contrast, trigonometric functions may create populations that diverge in their fitnesses as sub-populations tend towards different local extrema
     """
-    return fitness
+    return 1 - (fitness - 0.1) ** 2 # should make fitness converge to 0.1
 
 def next_gen(population, fitnesses, Ub, b, Ud, d, fitness_function):
     """
@@ -77,17 +77,17 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fi
                     differences = [0]
                     k = 1
                     while k < len(mean_fitnesses):
-                        differences.append(mean_fitnesses[k] - mean_fitnesses[k - 1])
+                        differences.append(mean_fitnesses[k] - mean_fitnesses[0]) # plots net change since last generation rather than arbitrary constant
                         k += 1
 
                     axs[i][j].plot(range(len(fitnesses)), differences, color='gray')
                     axs[i][j].set_title(f'Ub={Ub}, Ud={Ud}')
 
             x = np.linspace(0, generations, 1000)
-            y1 = [population * Ub * b**2 * i for i in x]
-            y2 = [(b**2 * ((2 * np.log(population * b) - (np.log(b) - np.log(Ub))) / (np.log(b) - np.log(Ub)))) * i for i in x]
-            # axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red') These lines plot predicted regime models from Desai & Fisher
-            # axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
+            y1 = [Ub * b**2 * i for i in x] # successive mutations model
+            y2 = [(b**2 * ((2 * np.log(population * b) - (np.log(b) - np.log(Ub))) / (np.log(b) - np.log(Ub)))) * i / population for i in x]
+            axs[i][j].plot(x, y2, label='Common Beneficial Mutations', color='red') # These lines plot predicted regime models from Desai & Fisher
+            axs[i][j].plot(x, y1, label='Successive Mutations', color='blue')
             if i == 0 and j == 0:
                 axs[i][j].legend()
 
@@ -97,19 +97,21 @@ def simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fi
     if plot:
         plt.savefig(f'imgs/{generations} generations, {runs} runs')
 
+    return 'Output from simulate()'
+
 if __name__=='__main__':
 
     start_time = time.time()
 
-    population = 10 ** 2
-    generations = 150
+    population = 10 ** 5
+    generations = 200
     starting_fitness = 0.5
-    b = 0.01
-    d = -0.0 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
-    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-4, 0.3, 2)]
-    Uds = [round(i*100)/100 for i in np.linspace(10**-2, 10**-1, 2)]
+    b = 0.1
+    d = -0.1 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
+    Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 0.1, 2)]
+    Uds = [round(i*100)/100 for i in np.linspace(0, 0, 2)]
 
-    runs = 1
+    runs = 10
     with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
         for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fitness_function=fitness_function, plot=True):
             # print(i)
