@@ -1,17 +1,20 @@
 import numpy as np
 import warnings
 import random
-import alive_progress as alive_poggers
 
 
+# noinspection PyClassHasNoInit
 class FitnessFunctions:
     def univariate_basic(cls, fitness: float) -> float:
         """returns input"""
         return fitness
 
-    def univariate_converge(self, fitness: float) -> float:
+    def univariate_converge(cls, fitness: float) -> float:
         """fitness function where 0.1 is the optimal fitness"""
         return 1 - (fitness - 0.1) ** 2
+
+    def nvariate_average(cls, genotype: list) -> float:
+        return sum(genotype) / len(genotype)
 
 
 class Organism:
@@ -23,15 +26,16 @@ class Organism:
         self.name = name
         self.genotype = genotype
         self.parent = parent
-        self.children = []
-        self.mutations = []
+        self.children: list = []
+        self.mutations: list = []
         self.pop = pop
 
     def __str__(self) -> str:
         return self.name
 
     def get_fitness(self) -> float:
-        return self.pop.sim.fitness_func(self.genotype)
+        print(pop, type(pop), pop.sim)
+        return self.pop.sim.fitness_func(FitnessFunctions, self.genotype)
 
     def reproduce(self, count: int) -> object:
         child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self)
@@ -41,8 +45,8 @@ class Organism:
         return child
 
     def mutate(self, mean: float, sd: float) -> None:
-        impact = np.random.normal(mean, sd, len(genotype))
-        id = f'MO{name}'
+        impact = np.random.normal(mean, sd, len(self.genotype))
+        id = f'MO: {self.name}'
         mutation = Mutation(id, victims=[self], impact=impact)
         self.mutations.append(mutation)
         return
@@ -103,7 +107,8 @@ class Population:
 
         # randomly delete organisms until population is correct
         while sum(new_gen.values()) > self.n:
-            new_gen[random.choices(list(a.keys()))] -= 1
+            print(list(new_gen.keys()))
+            new_gen[random.choices(list(new_gen.keys()))] -= 1
 
         # populate next generation
         for org, children in list(new_gen.items()):
@@ -128,8 +133,8 @@ class Simulation:
         return f'Instance of Simulation with {self.pop}, {self.runs} runs, and {self.gens} gens'
 
     def run(self):
-        for i in range(runs):
-            for j in range(gens):
+        for i in range(self.runs):
+            for j in range(self.gens):
                 self.pop.reproduce()
             j = 0
             while j < gens:
@@ -149,10 +154,11 @@ class Simulation:
 
 if __name__ == '__main__':
     pop = Population(10 ** 1, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004, 3)
-    sim = Simulation(pop, 15, 50, FitnessFunctions.univariate_basic);
+    sim = Simulation(pop, 15, 50, FitnessFunctions.nvariate_average);
     pop.sim = sim
 
     print(pop)
     print(pop.sim)
     print(str(pop.organisms[0][0]), "through", str(pop.organisms[-1][-1]))
     print('hello world')
+    sim.run()
