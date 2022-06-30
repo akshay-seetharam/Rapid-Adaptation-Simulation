@@ -1,6 +1,7 @@
 import numpy as np
 import warnings
 import random
+import alive_progress as alive_poggers
 
 
 class FitnessFunctions:
@@ -17,7 +18,8 @@ class Organism:
     def __init__(self, name: str, genotype: list, parent: object, pop: object) -> None:
         if parent is not Organism or pop is not Population:
             if parent is not None:
-                raise Exception(f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
+                raise Exception(
+                    f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
         self.name = name
         self.genotype = genotype
         self.parent = parent

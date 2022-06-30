@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="complete organism and implement naming for mutations and organisms">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="Simulation runner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/full-organism-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-organism-model.py" afterDir="false" />
     </list>
@@ -345,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656622296189</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Simulation runner">
+      <created>1656623072764</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1656623072764</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,10 +390,11 @@
     <MESSAGE value="wrote reproduce method in Organism w/o mutations" />
     <MESSAGE value="implement organism reproduction and mutation" />
     <MESSAGE value="complete organism and implement naming for mutations and organisms" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete organism and implement naming for mutations and organisms" />
+    <MESSAGE value="Simulation runner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simulation runner" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656622883947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656623787526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$simple_fitness_tracking.coverage" NAME="simple-fitness-tracking Coverage Results" MODIFIED="1656351407583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
