@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="Custom fitness function and correct plotting">
-      <change afterPath="$PROJECT_DIR$/full-organism-model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="OOP architecture for full model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +151,7 @@
       <workItem from="1654877336096" duration="14187000" />
       <workItem from="1655236469564" duration="8029000" />
       <workItem from="1655249676744" duration="4454000" />
-      <workItem from="1656564317524" duration="3063000" />
+      <workItem from="1656564317524" duration="3374000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -310,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656546240797</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="OOP architecture for full model">
+      <created>1656567806300</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656567806300</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +347,8 @@
     <MESSAGE value="better progress bar" />
     <MESSAGE value="Custom fitness function in simple-fitness-tracking.py" />
     <MESSAGE value="Custom fitness function and correct plotting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Custom fitness function and correct plotting" />
+    <MESSAGE value="OOP architecture for full model" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP architecture for full model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656567356584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
