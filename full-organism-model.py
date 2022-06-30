@@ -14,15 +14,23 @@ class FitnessFunctions:
 
 
 class Organism:
-    def __init__(self, name: str, genotype: list) -> None:
+    def __init__(self, name: str, genotype: list, parent: Organism) -> None:
         self.name = name
         self.genotype = genotype
+        self.parent = parent
+        self.children = []
+        self.mutations = []
 
     def __str__(self) -> str:
         return self.name
 
     def get_fitness(self) -> float:
         return 0.1
+
+    def reproduce(self) -> Organism:
+        child = Organism(name=None, genotype=self.genotype, parent=self)
+        self.children.append(child)
+        return child
 
     def mutate(self, mean: float, sd: float) -> None:
         return
@@ -88,7 +96,7 @@ class Population:
         # populate next generation
         for org, children in list(new_gen.items()):
             for i in range(children):
-                self.organisms[-1].append(org.copy())
+                self.organisms[-1].append(org.reproduce())
 
     def plot(self, img_destination: str, *args, **kwargs) -> None:
         return
