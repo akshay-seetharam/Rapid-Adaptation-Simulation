@@ -29,7 +29,7 @@ class Organism:
         return self.name
 
     def get_fitness(self) -> float:
-        return 0.1
+        return self.pop.sim.fitness_func(self.genotype)
 
     def reproduce(self, count: int) -> object:
         child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self)
@@ -120,10 +120,23 @@ class Simulation:
         self.runs = runs
         self.gens = gens
         self.fitness_func = fitness_func
-        self.compiled_fitnesses = np.zeros((runs, gens, pop.n))
+        self.compiled_fitnesses = np.zeros((runs, gens, self.pop.n))
 
     def __str__(self) -> str:
         return f'Instance of Simulation with {self.pop}, {self.runs} runs, and {self.gens} gens'
+
+    def run(self):
+        for i in range(runs):
+            for j in range(gens):
+                self.pop.reproduce()
+            j = 0
+            while j < gens:
+                k = 0
+                while k < self.pop.n:
+                    self.compiled_fitnesses[i][j][k] = self.pop.organisms[j][k].get_fitness()
+                    k += 1
+                j += 1
+            self.pop.organisms = [[]]
 
     def fitness(self, genotype: list) -> float:
         return self.fitness_func(*genotype)
