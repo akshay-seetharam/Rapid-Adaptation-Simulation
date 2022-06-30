@@ -14,12 +14,16 @@ class FitnessFunctions:
 
 
 class Organism:
-    def __init__(self, name: str, genotype: list, parent: Organism) -> None:
+    def __init__(self, name: str, genotype: list, parent: object, pop: object) -> None:
+        if parent is not Organism or pop is not Population:
+            if parent is not None:
+                raise Exception(f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
         self.name = name
         self.genotype = genotype
         self.parent = parent
         self.children = []
         self.mutations = []
+        self.pop = pop
 
     def __str__(self) -> str:
         return self.name
@@ -27,8 +31,8 @@ class Organism:
     def get_fitness(self) -> float:
         return 0.1
 
-    def reproduce(self) -> Organism:
-        child = Organism(name=None, genotype=self.genotype, parent=self)
+    def reproduce(self, count: int) -> object:
+        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self)
         self.children.append(child)
         for mutation in child.mutations:
             mutation.victims.append(child)
@@ -57,7 +61,7 @@ class Mutation:
 
 class Population:
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,
-                 d_sd: float) -> None:
+                 d_sd: float, len_genome: int) -> None:
         self.n = n
         self.name = name
         self.Ub = Ub
@@ -68,9 +72,9 @@ class Population:
         self.d_sd = d_sd
         self.organisms = [[]]
         self.sim = None
+        self.len_genome = len_genome
         for i in range(n):
-            # self.organisms[0].append(Organism())
-            # raise Exception("write this, idiot")
+            self.organisms[0].append(Organism(f'Gen 0, Org {i}', np.random.random(self.len_genome), None, self))
             pass
 
     def __str__(self) -> str:
@@ -101,8 +105,10 @@ class Population:
 
         # populate next generation
         for org, children in list(new_gen.items()):
+            count = 0
             for i in range(children):
-                self.organisms[-1].append(org.reproduce())
+                self.organisms[-1].append(org.reproduce(count))
+                count += 1
 
     def plot(self, img_destination: str, *args, **kwargs) -> None:
         return
@@ -127,10 +133,11 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    pop = Population(10 ** 1, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004)
+    pop = Population(10 ** 1, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004, 3)
     sim = Simulation(pop, 15, 50, FitnessFunctions.univariate_basic);
     pop.sim = sim
-    org = Organism("org_0", [0.1, 0.2, 0.3])
 
-    print(pop, sim, org)
+    print(pop)
+    print(pop.sim)
+    print(str(pop.organisms[0][0]), "through", str(pop.organisms[-1][-1]))
     print('hello world')
