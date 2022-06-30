@@ -1,6 +1,7 @@
 import numpy as np
 import warnings
 import random
+from matplotlib import pyplot as plt
 
 
 # noinspection PyClassHasNoInit
@@ -19,7 +20,7 @@ class FitnessFunctions:
 
 class Organism:
     def __init__(self, name: str, genotype: list, parent: object, pop: object) -> None:
-        if parent is not Organism or pop is not Population:
+        if not type(parent) == Organism or not type(pop) == Population:
             if parent is not None:
                 raise Exception(
                     f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
@@ -34,11 +35,10 @@ class Organism:
         return self.name
 
     def get_fitness(self) -> float:
-        print(pop, type(pop), pop.sim)
         return self.pop.sim.fitness_func(FitnessFunctions, self.genotype)
 
     def reproduce(self, count: int) -> object:
-        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self)
+        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self, pop=self.pop)
         self.children.append(child)
         for mutation in child.mutations:
             mutation.victims.append(child)
@@ -96,6 +96,7 @@ class Population:
         # randomly distribute deleterious mutations
         random.shuffle(self.organisms[-2])
         num_deleterious_mutations = np.random.binomial(self.n, self.Ud)
+        print(num_deleterious_mutations)
         for i in range(num_deleterious_mutations):
             self.organisms[-2][i].mutate(self.d_mean, self.d_sd)
 
@@ -103,12 +104,11 @@ class Population:
         new_gen = {}
         for org in self.organisms[-2]:
             fitness = org.get_fitness()
-            new_gen[org] = np.exp(fitness)  # f(t) = f(0) * exp(fitness * t)
+            new_gen[org] = round(np.exp(fitness))  # f(t) = f(0) * exp(fitness * t)
 
         # randomly delete organisms until population is correct
         while sum(new_gen.values()) > self.n:
-            print(list(new_gen.keys()))
-            new_gen[random.choices(list(new_gen.keys()))] -= 1
+            new_gen[random.choices(list(new_gen.keys()))[0]] -= 1
 
         # populate next generation
         for org, children in list(new_gen.items()):
@@ -137,7 +137,7 @@ class Simulation:
             for j in range(self.gens):
                 self.pop.reproduce()
             j = 0
-            while j < gens:
+            while j < self.gens:
                 k = 0
                 while k < self.pop.n:
                     self.compiled_fitnesses[i][j][k] = self.pop.organisms[j][k].get_fitness()
@@ -154,7 +154,7 @@ class Simulation:
 
 if __name__ == '__main__':
     pop = Population(10 ** 1, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004, 3)
-    sim = Simulation(pop, 15, 50, FitnessFunctions.nvariate_average);
+    sim = Simulation(pop, 1, 2, FitnessFunctions.nvariate_average);
     pop.sim = sim
 
     print(pop)
@@ -162,3 +162,18 @@ if __name__ == '__main__':
     print(str(pop.organisms[0][0]), "through", str(pop.organisms[-1][-1]))
     print('hello world')
     sim.run()
+
+    raw_fitnesses = sim.compiled_fitnesses
+    averages = np.zeros((raw_fitnesses.shape[1:]))
+    print(averages.shape, raw_fitnesses.shape)
+    i = 0
+    while i < raw_fitnesses.shape[1]:
+        j = 0
+        while j < raw_fitnesses.shape[2]:
+            print(raw_fitnesses.shape[0], i, j)
+            averages[i][j] = sum(raw_fitnesses[:, i, j]) / raw_fitnesses.shape[0]
+            j += 1
+        i += 1
+    print(averages, averages.shape)
+    plt.imshow(averages)
+    plt.colorbar()
