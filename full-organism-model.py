@@ -30,9 +30,15 @@ class Organism:
     def reproduce(self) -> Organism:
         child = Organism(name=None, genotype=self.genotype, parent=self)
         self.children.append(child)
+        for mutation in child.mutations:
+            mutation.victims.append(child)
         return child
 
     def mutate(self, mean: float, sd: float) -> None:
+        impact = np.random.normal(mean, sd, len(genotype))
+        id = f'MO{name}'
+        mutation = Mutation(id, victims=[self], impact=impact)
+        self.mutations.append(mutation)
         return
 
 
