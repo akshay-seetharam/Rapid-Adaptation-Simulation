@@ -14,18 +14,17 @@ class FitnessFunctions:
         """fitness function where 0.1 is the optimal fitness"""
         return 1 - (fitness - 0.1) ** 2
 
-    def nvariate_average(cls, genotype: list) -> float:
-        return sum(genotype) / len(genotype)
+    def nvariate_average(cls, phenotype: list) -> float:
+        return sum(phenotype) / len(phenotype)
 
 
-class Organism:
-    def __init__(self, name: str, genotype: list, parent: object, pop: object) -> None:
+class Organism: # Lineages > Organisms
+    def __init__(self, name: str, phenotype: list, parent: object, pop: object) -> None:
         if not type(parent) == Organism or not type(pop) == Population:
             if parent is not None:
-                raise Exception(
-                    f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
+                raise Exception(f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
         self.name = name
-        self.genotype = genotype
+        self.phenotype = phenotype
         self.parent = parent
         self.children: list = []
         self.mutations: list = []
@@ -35,17 +34,17 @@ class Organism:
         return self.name
 
     def get_fitness(self) -> float:
-        return self.pop.sim.fitness_func(FitnessFunctions, self.genotype)
+        return self.pop.sim.fitness_func(FitnessFunctions, self.phenotype)
 
     def reproduce(self, count: int) -> object:
-        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', genotype=self.genotype, parent=self, pop=self.pop)
+        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', phenotype=self.phenotype, parent=self, pop=self.pop)
         self.children.append(child)
         for mutation in child.mutations:
             mutation.victims.append(child)
         return child
 
     def mutate(self, mean: float, sd: float) -> None:
-        impact = np.random.normal(mean, sd, len(self.genotype))
+        impact = np.random.normal(mean, sd, len(self.phenotype))
         id = f'MO: {self.name}'
         mutation = Mutation(id, victims=[self], impact=impact)
         self.mutations.append(mutation)
@@ -65,7 +64,7 @@ class Mutation:
         return
 
 
-class Population:
+class Population: #TODO: write reproduction choosing mutations with numpy arrays, poisson random sample for pruning population to n
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,
                  d_sd: float, len_genome: int) -> None:
         self.n = n
@@ -145,16 +144,19 @@ class Simulation:
                 j += 1
             self.pop.organisms = [[]]
 
-    def fitness(self, genotype: list) -> float:
-        return self.fitness_func(*genotype)
+    def fitness(self, phenotype: list) -> float:
+        return self.fitness_func(*phenotype)
 
     def plot(self, img_destination: str, *args, **kwargs) -> None:
         return
 
 
 if __name__ == '__main__':
+    runs = 1
+    gens = 50
+
     pop = Population(10 ** 1, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004, 3)
-    sim = Simulation(pop, 1, 2, FitnessFunctions.nvariate_average);
+    sim = Simulation(pop, runs, gens, FitnessFunctions.nvariate_average);
     pop.sim = sim
 
     print(pop)
@@ -177,3 +179,5 @@ if __name__ == '__main__':
     print(averages, averages.shape)
     plt.imshow(averages)
     plt.colorbar()
+    plt.title("Average Fitness Across Generations")
+    plt.savefig(f'imgs/Full: {runs} runs, {gens} gens')

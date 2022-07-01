@@ -104,14 +104,14 @@ if __name__=='__main__':
     start_time = time.time()
 
     population = 10 ** 5
-    generations = 200
+    generations = 50
     starting_fitness = 0.5
     b = 0.1
     d = -0.1 # make d = 0 when comparing against desai/fisher eqns for mean fitness growth
     Ubs = [round(i * 1000)/1000 for i in np.linspace(10**-3, 0.1, 2)]
     Uds = [round(i*100)/100 for i in np.linspace(0, 0, 2)]
 
-    runs = 10
+    runs = 1
     with alive_progress.alive_bar(runs * len(Ubs) * len(Uds) * generations, bar='notes') as bar:
         for i in simulate(population, generations, starting_fitness, b, d, Ubs, Uds, runs, fitness_function=fitness_function, plot=True):
             # print(i)
