@@ -22,8 +22,21 @@ class Lineage:
         self.population = population
         self.organisms = np.zeros((population.simulation.gens, population.n, num_traits)) # each generation has organisms represented by a phenotype with a num_traits-dimensional phenotype; the fitness function can be used to calculate the fitness
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Lineage with mutations: {self.mutations}'
+
+    def get_fitness(self) -> np.ndarray:
+        fitness = np.zeros_like(self.organisms)
+        i = 0
+        while i < self.organisms.shape[0]
+            j = 0
+            while j < self.organisms.shape[1]
+                fitness[i, j] = self.population.simulation.fitness_func(FitnessFunctions, self.organisms[i, j])
+            i += 1
+        return fitness
+
+    def get_org_fitness(self, org_id: list) -> float:
+        return self.population.simulation.fitness_func(FitnessFunctions, self.organisms[org_id])
 
 class Population:
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,

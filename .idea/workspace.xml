@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="meet on thursday">
-      <change afterPath="$PROJECT_DIR$/fitnesses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/Full: 1 runs, 30 gens.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/full-organism-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-organism-model.py" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="beginning Lineage-baesd model">
+      <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +156,7 @@
       <workItem from="1656564317524" duration="3374000" />
       <workItem from="1656714177770" duration="2384000" />
       <workItem from="1657039016330" duration="3343000" />
-      <workItem from="1657129195275" duration="3111000" />
+      <workItem from="1657129195275" duration="3482000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -379,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656636469876</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="beginning Lineage-baesd model">
+      <created>1657133702265</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1657133702266</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,7 +436,8 @@
     <MESSAGE value="Write more but mainly committing because afk soon" />
     <MESSAGE value="plotting average fitnesses" />
     <MESSAGE value="meet on thursday" />
-    <option name="LAST_COMMIT_MESSAGE" value="meet on thursday" />
+    <MESSAGE value="beginning Lineage-baesd model" />
+    <option name="LAST_COMMIT_MESSAGE" value="beginning Lineage-baesd model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
