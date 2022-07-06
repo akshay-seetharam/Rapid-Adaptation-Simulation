@@ -38,6 +38,27 @@ class Lineage:
     def get_org_fitness(self, org_id: list) -> float:
         return self.population.simulation.fitness_func(FitnessFunctions, self.organisms[org_id])
 
+    def gen_pop(self, gen: int) -> int:
+        """returns population at given generation"""
+        j = 0
+        pop = 0
+        while j < self.organisms.shape[1]:
+            if self.organisms[gen, j] == 1:
+                pop += 1
+            j += 1
+        return pop
+
+    def get_gens(self) -> int:
+        """returns number of generations"""
+        i = 0
+        while self.organisms[i][0] != 0:
+            i += 1
+        return i
+
+    def reproduce(self) -> None:
+        num_offspring = np.exp(self.get_org_fitness([self.get_gens(), 0])) * self.gen_pop(self.get_gens - 1)
+
+
 class Population:
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,
                  d_sd: float, num_traits: int, sim: Simulation) -> None:
