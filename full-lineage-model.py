@@ -4,39 +4,6 @@ import random
 from matplotlib import pyplot as plt
 from fitnesses import *
 
-class Organism: # Lineages > Organisms
-    def __init__(self, name: str, phenotype: list, parent: object, pop: object) -> None:
-        if not type(parent) == Organism or not type(pop) == Population:
-            if parent is not None:
-                raise Exception(f'parent must be of type Organism\npop must be of type Population\nparent is type {type(parent)}\npop is type {type(pop)}')
-        self.name = name
-        self.phenotype = phenotype
-        self.parent = parent
-        self.children: list = []
-        self.mutations: list = []
-        self.pop = pop
-
-    def __str__(self) -> str:
-        return self.name
-
-    def get_fitness(self) -> float:
-        return self.pop.sim.fitness_func(FitnessFunctions, self.phenotype)
-
-    def reproduce(self, count: int) -> object:
-        child = Organism(name=f'Gen {len(pop.organisms)}, Org {count}', phenotype=self.phenotype, parent=self, pop=self.pop)
-        self.children.append(child)
-        for mutation in child.mutations:
-            mutation.victims.append(child)
-        return child
-
-    def mutate(self, mean: float, sd: float) -> None:
-        impact = np.random.normal(mean, sd, len(self.phenotype))
-        id = f'MO: {self.name}'
-        mutation = Mutation(id, victims=[self], impact=impact)
-        self.mutations.append(mutation)
-        return
-
-
 class Mutation:
     def __init__(self, id: str, victims: list, impact: list) -> None:
         self.id = id
@@ -46,13 +13,21 @@ class Mutation:
     def __str__(self) -> str:
         return self.id
 
-    def plot_fixation(self, *args, **kwargs):
+    def plot_fixation(self, *args, **kwargs) -> None:
         return
 
+class Lineage:
+    def __init__(self, mutations: set, population: Population) -> None:
+        self.mutations = mutations
+        self.population = population
+        self.organisms = np.zeros((population.simulation.gens, population.n, num_traits)) # each generation has organisms represented by a phenotype with a num_traits-dimensional phenotype; the fitness function can be used to calculate the fitness
 
-class Population: #TODO: write reproduction choosing mutations with numpy arrays, poisson random sample for pruning population to n
+    def __str__(self):
+        return f'Lineage with mutations: {self.mutations}'
+
+class Population:
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,
-                 d_sd: float, len_genome: int) -> None:
+                 d_sd: float, num_traits: int, sim: Simulation) -> None:
         self.n = n
         self.name = name
         self.Ub = Ub
@@ -61,12 +36,8 @@ class Population: #TODO: write reproduction choosing mutations with numpy arrays
         self.Ud = Ud
         self.d_mean = d_mean
         self.d_sd = d_sd
-        self.organisms = [[]]
-        self.sim = None
-        self.len_genome = len_genome
-        for i in range(n):
-            self.organisms[0].append(Organism(f'Gen 0, Org {i}', np.random.random(self.len_genome), None, self))
-            pass
+        self.num_traits = num_traits
+        self.sim = sim
 
     def __str__(self) -> str:
         return self.name
@@ -105,7 +76,6 @@ class Population: #TODO: write reproduction choosing mutations with numpy arrays
     def plot(self, img_destination: str, *args, **kwargs) -> None:
         return
 
-
 class Simulation:
     def __init__(self, pop: Population, runs: int, gens: int, fitness_func) -> None:
         self.pop = pop
@@ -135,35 +105,3 @@ class Simulation:
 
     def plot(self, img_destination: str, *args, **kwargs) -> None:
         return
-
-
-if __name__ == '__main__':
-    runs = 1
-    gens = 30
-
-    pop = Population(10 ** 2, "pop_0", 10 ** (-3), 0.01, 0.002, 0.1, 0.02, 0.004, 3)
-    sim = Simulation(pop, runs, gens, FitnessFunctions.nvariate_converge);
-    pop.sim = sim
-
-    print(pop)
-    print(pop.sim)
-    print(str(pop.organisms[0][0]), "through", str(pop.organisms[-1][-1]))
-    print('hello world')
-    sim.run()
-
-    raw_fitnesses = sim.compiled_fitnesses
-    averages = np.zeros((raw_fitnesses.shape[1:]))
-    print(averages.shape, raw_fitnesses.shape)
-    i = 0
-    while i < raw_fitnesses.shape[1]:
-        j = 0
-        while j < raw_fitnesses.shape[2]:
-            print(raw_fitnesses.shape[0], i, j)
-            averages[i][j] = sum(raw_fitnesses[:, i, j]) / raw_fitnesses.shape[0]
-            j += 1
-        i += 1
-    print(averages, averages.shape)
-    plt.imshow(averages)
-    plt.colorbar()
-    plt.title("Average Fitness Across Generations")
-    plt.savefig(f'imgs/Full: {runs} runs, {gens} gens')
