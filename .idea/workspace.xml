@@ -156,7 +156,7 @@
       <workItem from="1656564317524" duration="3374000" />
       <workItem from="1656714177770" duration="2384000" />
       <workItem from="1657039016330" duration="3343000" />
-      <workItem from="1657129195275" duration="7549000" />
+      <workItem from="1657129195275" duration="9852000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -396,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657149381213</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add reproduce, gen_pop, get_gens function in Lineage">
+      <created>1657159671728</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1657159671728</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
