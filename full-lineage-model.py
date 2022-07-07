@@ -51,12 +51,30 @@ class Lineage:
     def get_gens(self) -> int:
         """returns number of generations"""
         i = 0
-        while self.organisms[i][0] != 0:
+        while self.organisms[i] != np.zeros_like(self.organisms[0]):
             i += 1
         return i
 
     def reproduce(self) -> None:
         num_offspring = np.exp(self.get_org_fitness([self.get_gens(), 0])) * self.gen_pop(self.get_gens - 1)
+        i = 0
+        while i < num_offspring:
+            self.population.organisms[self.get_gens(), i] = self.population.organisms[self.get_gens() - 1, 0].copy()
+            i += 1
+
+    def mutate(self, mean, sd) -> None:
+        # finds first nonzero entry in last generation of lineage, gets its phenotype, creates a new lineage with the applied mutation
+        # then deletes mutated organism from this lineage
+        j = 0
+        while self.organisms[self.get_gens() - 1, j] == np.zeros_like(self.organisms[0][0]):
+            j += 1
+
+        # get phenotype of organism
+        phenotype = self.organisms[self.get_gens() - 1, j]
+
+        # create new lineage with mutation
+        mutation = Mutation(f'')
+        phenotype[random.randint(len(phenotype))]
 
 
 class Population:
