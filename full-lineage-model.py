@@ -74,7 +74,7 @@ class Lineage:
 
         # create new lineage with mutation
         mutation = Mutation(f'')
-        phenotype[random.randint(len(phenotype))]
+        phenotype[random.randint(len(phenotype))] #TODO
 
 
 class Population:
