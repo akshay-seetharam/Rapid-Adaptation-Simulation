@@ -77,7 +77,11 @@ class Lineage:
 
         # mutate each trait in the phenotype according to the mutation's mean and std dev
         for index, value in enumerate(phenotype):
-            phenotype[index] += np.random.normal(mean, sd)
+            phenotype[index] += mutation.impact[index]
+
+        # create new lineage with mutated organism's phenotype
+        new_lineage = Lineage(self.mutations.add(mutation), self.population)
+        new_lineage.organisms[0][0] = phenotype
 
 
 class Population:
