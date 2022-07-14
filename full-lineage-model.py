@@ -73,8 +73,11 @@ class Lineage:
         phenotype = self.organisms[self.get_gens() - 1, j]
 
         # create new lineage with mutation
-        mutation = Mutation(f'')
-        phenotype[random.randint(len(phenotype))] #TODO
+        mutation = Mutation(f'Ancestor: Generation {self.get_gens()}, Organism {j}', mean, sd)
+
+        # mutate each trait in the phenotype according to the mutation's mean and std dev
+        for index, value in enumerate(phenotype):
+            phenotype[index] += np.random.normal(mean, sd)
 
 
 class Population:
