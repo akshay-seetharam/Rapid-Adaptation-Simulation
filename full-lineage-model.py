@@ -99,6 +99,7 @@ class Population:
         self.sim = sim
 
     def __str__(self) -> str:
+        
         return self.name
 
     def reproduce(self) -> None:
