@@ -5,9 +5,8 @@ from matplotlib import pyplot as plt
 from fitnesses import *
 
 class Mutation:
-    def __init__(self, id: str, victims: list, impact: list) -> None:
+    def __init__(self, id: str, impact: list) -> None:
         self.id = id
-        self.victims = victims
         self.impact = impact
 
     def __str__(self) -> str:
@@ -17,10 +16,11 @@ class Mutation:
         return
 
 class Lineage:
-    def __init__(self, mutations: set, population: Population) -> None:
+    def __init__(self, mutations: set, population: Population, beneficial_mutation_rate: float) -> None:
         self.mutations = mutations
         self.population = population
         self.organisms = np.zeros((population.simulation.gens, population.n, num_traits)) # each generation has organisms represented by a phenotype with a num_traits-dimensional phenotype; the fitness function can be used to calculate the fitness
+        self.beneficial_mutation_rate = beneficial_mutation_rate
 
     def __str__(self) -> str:
         return f'Lineage with mutations: {self.mutations}'
@@ -73,7 +73,7 @@ class Lineage:
         phenotype = self.organisms[self.get_gens() - 1, j]
 
         # create new lineage with mutation
-        mutation = Mutation(f'Ancestor: Generation {self.get_gens()}, Organism {j}', mean, sd)
+        mutation = Mutation(f'Ancestor: Generation {self.get_gens()}, Organism {j}', np.random.normal(mean, sd, self.population.num_traits))
 
         # mutate each trait in the phenotype according to the mutation's mean and std dev
         for index, value in enumerate(phenotype):
@@ -84,6 +84,7 @@ class Lineage:
         new_lineage.organisms[0][0] = phenotype
 
 
+# TODO: Edit Population and Simulation to accomodate changing mutation rate for each lineage
 class Population:
     def __init__(self, n: int, name: str, Ub: float, b_mean: float, b_sd: float, Ud: float, d_mean: float,
                  d_sd: float, num_traits: int, sim: Simulation) -> None:
