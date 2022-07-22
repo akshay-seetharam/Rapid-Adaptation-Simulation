@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class Mutation:
     def __init__(self, impact: float):
@@ -15,9 +16,9 @@ class Lineage:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
 
-    def mutate(self) -> Lineage:
-        mutation = Mutation(np.random.normal(b_mean, b_stdev))
-        mutations = self.mutations.union(mutation)
+    def mutate(self):
+        mutation = Mutation(np.random.normal(self.b_mean, self.b_stdev))
+        mutations = self.mutations.union({mutation})
         return Lineage(mutations, self.fitness + mutation.impact, self.Ub, self.b_mean, self.b_stdev)
 
 class Population:
@@ -38,24 +39,25 @@ class Population:
             self.generations[-1][lineage] = population_growth
 
         # mutate a proportion of each lineage
-        for lineage, count in self.generations[-1].items():
-            num_mutated = int(np.random.binomial(count, Ub))
+            num_mutated = int(np.random.binomial(count * np.exp(lineage.fitness), self.Ub))
             for i in range(num_mutated):
                 new_lineage = lineage.mutate()
                 self.generations[-1][new_lineage] = 1
                 self.generations[-1][lineage] -= 1
 
+
         # remove the lineages with 0 population to prevent any chicanery
-        for lineage, count, in self.generations[-1].items():
-            if count == 0:
-                del self.generations[-1][lineage]
+        self.generations[-1] = {k: v for k, v in self.generations[-1].items() if v > 0}
 
         # prune population down to size
-        current_population = sum(self.generations[-1].values())
-        correction_factor = self.size / current_population
-        for lineage in self.generations[-1]:
-            self.generations[-1][lineage] *= correction_factor
+        while sum(self.generations[-1].values()) > self.size:
+            choice = random.choices(list(self.generations[-1].keys()), weights=list(self.generations[-1].values()))[0]
+            self.generations[-1][choice] -= 1
 
+        # remove the lineages with 0 population to prevent any chicanery
+        self.generations[-1] = {k: v for k, v in self.generations[-1].items() if v > 0}
+
+        print('reproduction done for generation', len(self.generations) - 1)
 class Simulation:
     def __init__(self, runs: int, num_gens: int, size: int, *args):
         self.runs = runs
@@ -69,4 +71,9 @@ class Simulation:
             population = Population(*self.population_parameters)
             for gen in range(self.num_gens):
                 population.reproduce()
-                self.compiled_fitnesses[run] = population.fitnesses # TODO: make the population.fitnesses return what it is supposed to
+                # self.compiled_fitnesses[run] = population.fitnesses # TODO: make the population.fitnesses return what it is supposed to
+
+if __name__ == '__main__':
+    sim = Simulation(15, 100, 10**4, 0.5, 10**(-3), 0.01, 0.005)
+    sim.run()
+    print("Simulation Complete")
