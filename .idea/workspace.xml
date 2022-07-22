@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="mutate lineage fix">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="rewrite entire lineage model except for population reproduction mechanism and population fitnesses">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
     </list>
@@ -160,7 +160,7 @@
       <workItem from="1657039016330" duration="3343000" />
       <workItem from="1657129195275" duration="22920000" />
       <workItem from="1657642072012" duration="15054000" />
-      <workItem from="1658249246431" duration="11137000" />
+      <workItem from="1658249246431" duration="12110000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -456,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658253105951</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="rewrite entire lineage model except for population reproduction mechanism and population fitnesses">
+      <created>1658468132871</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1658468132874</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="subplots" />
     <MESSAGE value="binomial and wrapping simulation in function" />
     <MESSAGE value="progress bar" />
     <MESSAGE value="better progress bar" />
@@ -512,7 +518,8 @@
     <MESSAGE value="create new lineage with mutated organisms's phenotype" />
     <MESSAGE value="commit for safety" />
     <MESSAGE value="mutate lineage fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutate lineage fix" />
+    <MESSAGE value="rewrite entire lineage model except for population reproduction mechanism and population fitnesses" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrite entire lineage model except for population reproduction mechanism and population fitnesses" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
