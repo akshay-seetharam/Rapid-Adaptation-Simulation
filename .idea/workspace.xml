@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="lineage experimentation, ceiling function">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="stabilizing selection added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,10 +150,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.full-lineage-model" />
+      <item itemvalue="Python.full-organism-model" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.simple-fitness-tracking" />
-      <item itemvalue="Python.full-organism-model" />
-      <item itemvalue="Python.full-lineage-model" />
     </list>
     <recent_temporary>
       <list>

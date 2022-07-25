@@ -34,7 +34,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.96, Lineage(set(), fitness + 0.01, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.04}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.8, Lineage(set(), fitness + 0.000001, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.2}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -69,11 +69,8 @@ class Population:
         self.generations[-1] = {k: v for k, v in self.generations[-1].items() if v > 0}
 
         # prune population down to size stochastically, main branch keeps population constant
-
-
-        while sum(self.generations[-1].values()) > self.size:
-            choice = random.choices(list(self.generations[-1].keys()), weights=list(self.generations[-1].values()))[0]
-            self.generations[-1][choice] -= 1
+        for lineage, count in self.generations[-1].items():
+            count -= np.random.binomial(count, self.size / sum(self.generations[-1].values()))
 
         # remove the lineages with 0 population to prevent any chicanery
         self.generations[-1] = {k: v for k, v in self.generations[-1].items() if v > 0}
