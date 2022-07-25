@@ -68,7 +68,9 @@ class Population:
         # remove the lineages with 0 population to prevent any chicanery
         self.generations[-1] = {k: v for k, v in self.generations[-1].items() if v > 0}
 
-        # prune population down to size
+        # prune population down to size stochastically, main branch keeps population constant
+
+
         while sum(self.generations[-1].values()) > self.size:
             choice = random.choices(list(self.generations[-1].keys()), weights=list(self.generations[-1].values()))[0]
             self.generations[-1][choice] -= 1
