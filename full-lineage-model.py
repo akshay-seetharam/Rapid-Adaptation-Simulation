@@ -34,7 +34,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.96, Lineage(set(), fitness + 0.01, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.04}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.9999, Lineage(set(), fitness + 0.01, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.0001}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -54,7 +54,7 @@ class Population:
 
         # reproduce each lineage in the previous generation
         for lineage, count in self.generations[-2].items():
-            population_growth = round(np.exp(lineage.func(lineage.fitness)) * count)
+            population_growth = math.ceil(np.exp(lineage.func(lineage.fitness)) * count)
             self.generations[-1][lineage] = population_growth
 
         # mutate a proportion of each lineage
@@ -107,7 +107,7 @@ if __name__ == '__main__':
     """ PARAMETERS """
     runs = 1
     num_gens = 1000
-    size = 10**3
+    size = 10**4
     starting_fitness = 0.0
     Ub = 0
     b_mean = 0.01
