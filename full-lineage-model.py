@@ -3,6 +3,7 @@ import random
 import matplotlib.pyplot as plt
 from alive_progress import alive_bar
 import math
+import sys
 
 class Mutation:
     def __init__(self, impact: float):
@@ -34,7 +35,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.9999, Lineage(set(), fitness + 0.01, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.0001}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.95, Lineage(set(), fitness + 0.0000001, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.05}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -54,11 +55,11 @@ class Population:
 
         # reproduce each lineage in the previous generation
         for lineage, count in self.generations[-2].items():
-            population_growth = math.ceil(np.exp(lineage.func(lineage.fitness)) * count)
+            population_growth = round(np.exp(lineage.func(lineage.fitness)) * count)
             self.generations[-1][lineage] = population_growth
 
         # mutate a proportion of each lineage
-            num_mutated = math.ceil(np.random.binomial(np.exp(lineage.func(lineage.fitness)) * count, self.Ub))
+            num_mutated = round(np.random.binomial(np.exp(lineage.func(lineage.fitness)) * count, self.Ub))
             for i in range(num_mutated):
                 new_lineage = lineage.mutate()
                 self.generations[-1][new_lineage] = 1
@@ -107,8 +108,8 @@ if __name__ == '__main__':
     """ PARAMETERS """
     runs = 1
     num_gens = 1000
-    size = 10**4
-    starting_fitness = 0.0
+    size = 10**3
+    starting_fitness = 0.01
     Ub = 0
     b_mean = 0.01
     b_stdev = 0
@@ -129,3 +130,4 @@ if __name__ == '__main__':
     plt.title(f"{num_gens} Gens, {size} Size, {starting_fitness} Starting Fitness, {Ub} Ub, {b_mean} b_mean, {b_stdev} b_stdev, {epistasis} epistasis\nStyle: {style}")
     plt.colorbar()
     plt.show()
+    sys.exit(0)

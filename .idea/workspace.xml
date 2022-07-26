@@ -150,9 +150,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.full-lineage-model" />
       <item itemvalue="Python.full-organism-model" />
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.simple-fitness-tracking" />
     </list>
     <recent_temporary>
