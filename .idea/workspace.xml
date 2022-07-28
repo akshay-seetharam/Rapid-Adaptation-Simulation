@@ -4,9 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="lineage experimentation, ceiling function">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="savefig instead of plot directly with Python">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/100 generations, 15 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/150 generations, 1 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/150 generations, 10 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/150 generations, 15 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/150 generations, 5 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/20 generations, 5 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/200 generations, 1 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/200 generations, 10 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/200 generations, 15 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/3 generations, 1 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/30 generations, 15 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/50 generations, 1 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/60 generations, 5 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 1 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 10 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/75 generations, 15 runs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/Full: 1 runs, 30 gens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/Full: 1 runs, 50 gens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/img.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +205,7 @@
       <workItem from="1657642072012" duration="15054000" />
       <workItem from="1658249246431" duration="32668000" />
       <workItem from="1658778277124" duration="2683000" />
-      <workItem from="1658958156813" duration="2394000" />
+      <workItem from="1658958156813" duration="7892000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
@@ -517,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658520260051</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="savefig instead of plot directly with Python">
+      <created>1659034439712</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1659034439713</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Custom fitness function and correct plotting" />
     <MESSAGE value="OOP architecture for full model" />
     <MESSAGE value="wrote reproduce method in Population" />
     <MESSAGE value="wrote reproduce method in Organism w/o mutations" />
@@ -573,7 +598,8 @@
     <MESSAGE value="debug reproduction in lineage model" />
     <MESSAGE value="plot fitnesses" />
     <MESSAGE value="stabilizing selection added" />
-    <option name="LAST_COMMIT_MESSAGE" value="stabilizing selection added" />
+    <MESSAGE value="savefig instead of plot directly with Python" />
+    <option name="LAST_COMMIT_MESSAGE" value="savefig instead of plot directly with Python" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
