@@ -35,7 +35,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.95, Lineage(set(), fitness + 0.0000001, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.05}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size}]#, Lineage(set(), fitness + 0.0000001, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.05}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     num_gens = 1000
     size = 10**3
     starting_fitness = 0.01
-    Ub = 0
+    Ub = 10**-2
     b_mean = 0.01
     b_stdev = 0
     epistasis = 1
@@ -129,5 +129,5 @@ if __name__ == '__main__':
     plt.suptitle("Fitnesses Over Time")
     plt.title(f"{num_gens} Gens, {size} Size, {starting_fitness} Starting Fitness, {Ub} Ub, {b_mean} b_mean, {b_stdev} b_stdev, {epistasis} epistasis\nStyle: {style}")
     plt.colorbar()
-    plt.show()
+    plt.savefig('imgs/plot.png')
     sys.exit(0)

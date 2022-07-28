@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="stabilizing selection added">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="lineage experimentation, ceiling function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
     </list>
@@ -186,6 +186,7 @@
       <workItem from="1657642072012" duration="15054000" />
       <workItem from="1658249246431" duration="32668000" />
       <workItem from="1658778277124" duration="2683000" />
+      <workItem from="1658958156813" duration="2394000" />
     </task>
     <task id="LOCAL-00001" summary="creation">
       <created>1653071140551</created>
