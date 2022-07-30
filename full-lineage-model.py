@@ -35,7 +35,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.95, Lineage(set(), fitness + 0.0000001, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.05}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.999, Lineage(set(), fitness + 0.05, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.001}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -106,18 +106,19 @@ def directional(x):
 
 if __name__ == '__main__':
     """ PARAMETERS """
-    runs = 1
-    num_gens = 1000
-    size = 10**3
-    starting_fitness = 0.01
+    runs = 30
+    num_gens = 200
+    size = 10**4
+    starting_fitness = 1
     Ub = 0
-    b_mean = 0.01
-    b_stdev = 0
+    b_mean = 0.1
+    b_stdev = 0.05
     epistasis = 1
     func = directional
     """ PARAMETERS """
+
     sim = Simulation(runs, num_gens, size, starting_fitness, Ub, b_mean, b_stdev, epistasis, func)
-    with alive_bar(runs * num_gens) as bar:
+    with alive_bar(runs * num_gens, bar='notes') as bar:
         for _ in sim.run():
             bar()
 
@@ -125,9 +126,18 @@ if __name__ == '__main__':
     # style = random.choice(plt.style.available)
     style = 'dark_background'
     plt.style.use(style)
-    plt.imshow(sim.compiled_fitnesses[0], aspect='auto', interpolation='none')
-    plt.suptitle("Fitnesses Over Time")
-    plt.title(f"{num_gens} Gens, {size} Size, {starting_fitness} Starting Fitness, {Ub} Ub, {b_mean} b_mean, {b_stdev} b_stdev, {epistasis} epistasis\nStyle: {style}")
-    plt.colorbar()
-    plt.show()
+
+    for i in range(runs):
+        if sim.compiled_fitnesses[i][199][int(size * 0.5)] > starting_fitness:
+            print(f"Run {i} Fixed")
+        else:
+            print(f"Run {i} Not Fixed")
+        plt.imshow(sim.compiled_fitnesses[i], aspect='auto', interpolation='none')
+        plt.title(f"{num_gens} Gens, {size} Size, {starting_fitness} Starting Fitness, {Ub} Ub, {b_mean} b_mean, {b_stdev} b_stdev, {epistasis} epistasis\nStyle: {style}")
+        plt.xlabel("Organismal Index")
+        plt.ylabel("Generation")
+        plt.colorbar()
+        plt.show()
+        plt.savefig(f'imgs/plot_{i}.png')
+        plt.clf()
     sys.exit(0)
