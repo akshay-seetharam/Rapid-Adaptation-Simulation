@@ -35,7 +35,7 @@ class Population:
         self.b_mean = b_mean
         self.b_stdev = b_stdev
         self.epistasis = epistasis
-        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.999, Lineage(set(), fitness + 0.05, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.001}] # Where starting lineages are found
+        self.generations = [{Lineage(set(), fitness, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.999, Lineage(set(), fitness + 0.04, self.Ub, b_mean, b_stdev, epistasis, func): size * 0.001}] # Where starting lineages are found
         self.fitnesses = np.zeros((1, size))
         self.fitnesses[0] = [self.starting_fitness] * self.size
 
@@ -128,7 +128,7 @@ if __name__ == '__main__':
     plt.style.use(style)
 
     for i in range(runs):
-        if sim.compiled_fitnesses[i][199][int(size * 0.5)] > starting_fitness:
+        if sim.compiled_fitnesses[i][num_gens - 1][int(size * 0.5)] > starting_fitness:
             print(f"Run {i} Fixed")
         else:
             print(f"Run {i} Not Fixed")
@@ -137,7 +137,6 @@ if __name__ == '__main__':
         plt.xlabel("Organismal Index")
         plt.ylabel("Generation")
         plt.colorbar()
-        plt.show()
+        # plt.show()
         plt.savefig(f'imgs/plot_{i}.png')
-        plt.clf()
     sys.exit(0)
