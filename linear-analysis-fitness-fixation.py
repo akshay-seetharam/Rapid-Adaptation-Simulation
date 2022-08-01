@@ -97,7 +97,7 @@ if __name__=='__main__':
 
     stdevs = [np.sqrt(x * (1 - x) / runs) + 10 ** -4 for x in data[1]]
 
-    plt.use_style('dark_background')
+    plt.style.use('dark_background')
 
     linear_analysis(data, stdevs)
     logistic_analysis(data, stdevs)
