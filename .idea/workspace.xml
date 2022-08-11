@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="analyze linear relationship between P(Fixation) and fitness delta">
-      <change afterPath="$PROJECT_DIR$/imgs/CubicModel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/CubicResiduals.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/LinearResiduals.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/LogisticModel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgs/LogisticResiduals.png" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="plot with dark background">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linear-analysis-fitness-fixation.py" beforeDir="false" afterPath="$PROJECT_DIR$/linear-analysis-fitness-fixation.py" afterDir="false" />
     </list>
@@ -194,21 +189,9 @@
       <workItem from="1659055659591" duration="1198000" />
       <workItem from="1659112482229" duration="10715000" />
       <workItem from="1659129356415" duration="10617000" />
-      <workItem from="1659270483903" duration="7577000" />
-    </task>
-    <task id="LOCAL-00001" summary="creation">
-      <created>1653071140551</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653071140552</updated>
-    </task>
-    <task id="LOCAL-00002" summary="creation">
-      <created>1653071148465</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1653071148465</updated>
+      <workItem from="1659270483903" duration="10876000" />
+      <workItem from="1659649453672" duration="6413000" />
+      <workItem from="1660231338541" duration="55000" />
     </task>
     <task id="LOCAL-00003" summary="creation">
       <created>1653071220387</created>
@@ -539,7 +522,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659291797028</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="add cubic and logistic curve fit">
+      <created>1659361100535</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1659361100546</updated>
+    </task>
+    <task id="LOCAL-00051" summary="plot with dark background">
+      <created>1659361196011</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1659361196012</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,8 +567,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="wrote reproduce method in Population" />
-    <MESSAGE value="wrote reproduce method in Organism w/o mutations" />
     <MESSAGE value="implement organism reproduction and mutation" />
     <MESSAGE value="complete organism and implement naming for mutations and organisms" />
     <MESSAGE value="Simulation runner" />
@@ -595,7 +590,9 @@
     <MESSAGE value="stabilizing selection added" />
     <MESSAGE value="Check fixation automatically, csv structure for storing data of fixation delta vs. P(fix)" />
     <MESSAGE value="analyze linear relationship between P(Fixation) and fitness delta" />
-    <option name="LAST_COMMIT_MESSAGE" value="analyze linear relationship between P(Fixation) and fitness delta" />
+    <MESSAGE value="add cubic and logistic curve fit" />
+    <MESSAGE value="plot with dark background" />
+    <option name="LAST_COMMIT_MESSAGE" value="plot with dark background" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -93,6 +93,10 @@ if __name__=='__main__':
     """PARAMETERS"""
 
     data = np.genfromtxt('x-vs-Pfix.csv', delimiter=',').transpose()
+    i = 0
+    while i < len(data[1]):
+        data[1][i] = np.log(1 / (1 - data[1][i]))
+        i += 1
     print(data)
 
     stdevs = [np.sqrt(x * (1 - x) / runs) + 10 ** -4 for x in data[1]]
@@ -100,5 +104,5 @@ if __name__=='__main__':
     plt.style.use('dark_background')
 
     linear_analysis(data, stdevs)
-    logistic_analysis(data, stdevs)
-    cubic_analysis(data, stdevs)
+    # logistic_analysis(data, stdevs)
+    # cubic_analysis(data, stdevs)
