@@ -1,5 +1,15 @@
 import numpy as np
 
+def next_gen(population, n, r):
+    """
+    Calculate the next generation of the population
+    """
+    for i in population:
+        vector = np.random.random((n)) # generate a random mutation vector
+        vector *= r / np.linalg.norm(vector) # scale to r
+        i = [i[j] + vector[j] for j in range(n)] # mutate the individual
+
+
 if __name__=='__main__':
     """ PARAMETERS """
     # taken from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4699269/table/T but with population cloud rather than single point
@@ -30,5 +40,11 @@ if __name__=='__main__':
     while j < fitnesses.shape[1]:
         fitnesses[0][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual
         j += 1
-    print(population)
-    print(fitnesses)
+
+    for i in range(generations):
+        next_gen(population, n, r)
+        j = 0
+        while j < fitnesses.shape[1]:
+            fitnesses[i][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual in next generation
+            j += 1
+
