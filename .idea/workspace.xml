@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="bug that i don't understand but genotype + fitness_func for genotype">
-      <change afterPath="$PROJECT_DIR$/imgs/plot.png" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="plot with dark background">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/full-lineage-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/full-lineage-model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -591,6 +592,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$simple_fitness_tracking.coverage" NAME="simple-fitness-tracking Coverage Results" MODIFIED="1656623963006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_lineage_model.coverage" NAME="full-lineage-model Coverage Results" MODIFIED="1658516904839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$linear_analysis_fitness_fixation.coverage" NAME="linear-analysis-fitness-fixation Coverage Results" MODIFIED="1659218698280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_lineage_model.coverage" NAME="full-lineage-model Coverage Results" MODIFIED="1660233783824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
