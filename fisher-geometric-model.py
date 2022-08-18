@@ -2,12 +2,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 import pandas as pd
 
-def select_parents():
+def select_parents(population, fitness_func):
     """
     Select the parents that will reproduce
     """
     # Calculate the fitnesses of the population
-    chances = np.log([fitness(i) for i in population]) # get logarithmic fitnesses
+    chances = np.log([fitness_func(i) for i in population]) # get logarithmic fitnesses
     chances /= sum(chances) # normalize the chances
     # Select parents with replacement, weighted by fitness
     parents = []
@@ -17,18 +17,19 @@ def select_parents():
 
     return parents
 
-def next_gen():
+def next_gen(population, fitness_func):
     """
     Calculate the next generation of the population
     """
     # select parents that will reproduce
-    parents = select_parents()
+    parents = select_parents(population, fitness_func)
     # mutate offspring
+    mutations = np.zeros_like(population)
     for i in range(len(population)):
         vector = np.random.random((n)) # generate a random mutation vector
         vector *= r / np.linalg.norm(vector) # scale to r
-        # population[i] = [parents[j] + vector[j] for j in range(n)] # mutate the individual
-        population += vector
+        mutations[i] = vector # assign the mutation vector to the offspring
+    return mutations, parents
 
 def plot_fitnesses():
     """
@@ -52,7 +53,6 @@ def plot_fitnesses():
 if __name__=='__main__':
     """ PARAMETERS """
     # taken from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4699269/table/T but with population cloud rather than single point
-    global n, a, Q, s0, r, sigma, e, m, N, mu, generations
     n = 2 # dimension of phenotypic space
     a = 1.0 # robustness parameter in fitness function
     Q = 1.0 # epistasis parameter in fitness function
@@ -63,20 +63,18 @@ if __name__=='__main__':
         return r * np.sqrt(n) / (2 * d)
     e = 1.0 # epistasis defined as big long expression from table, click URL in comment above
     m = 1 # pleiotropy, number of phenotypes affected by each mutation
-    N = 5 # number of individuals in population
+    N = 10 ** 4 # number of individuals in population
     mu = 10 ** -3 # mutation rate
 
     def fitness(phenotype): # fitness function from paper (input is distance from fitness peak)
         return np.exp(-1 * a * (np.linalg.norm(phenotype) ** Q))
 
-    generations = 3 # number of generations to run simulation for
+    generations = 20 # number of generations to run simulation for
     """ PARAMETERS """
 
     """ SIMULATION """
     # initialize population
-    global population
     population = np.random.normal(1.5, 0.5, size=(N, n)) # random population
-    global fitnesses
     fitnesses = np.zeros((generations, N))
     j = 0
     while j < fitnesses.shape[1]:
@@ -84,7 +82,8 @@ if __name__=='__main__':
         j += 1
 
     for i in range(generations):
-        next_gen()
+        mutations, parents = next_gen(population, fitness)
+        population = np.add(population, mutations) # mutate population
         j = 0
         while j < fitnesses.shape[1]:
             fitnesses[i][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual in next generation
