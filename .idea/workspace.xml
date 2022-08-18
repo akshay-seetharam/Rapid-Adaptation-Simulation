@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="mutate population">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fisher-geometric-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fisher-geometric-model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -575,7 +577,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="fisher-geometric-model" />
                       </list>
                     </value>
                   </entry>
