@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import pandas as pd
+from alive_progress import alive_bar as bar
 
 def select_parents(population, fitness_func):
     """
@@ -31,7 +32,7 @@ def next_gen(population, fitness_func):
         mutations[i] = vector # assign the mutation vector to the offspring
     return mutations, parents
 
-def plot_fitnesses():
+def plot_fitnesses(fitnesses):
     """
     Plot the fitnesses of the population
     """
@@ -49,6 +50,27 @@ def plot_fitnesses():
 
     # Display the plot
     plt.savefig('imgs/fitnesses-fgm.png')
+
+def simulation(n, a, Q, s0, r, sigma, x, e, m, N, mu, fitness, generations):
+    # initialize population
+    population = np.random.normal(1.5, 0.5, size=(N, n)) # random population
+    fitnesses = np.zeros((generations, N))
+    j = 0
+    while j < fitnesses.shape[1]:
+        fitnesses[0][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual
+        j += 1
+
+    for i in range(generations):
+        mutations, parents = next_gen(population, fitness)
+        population = np.add(population, mutations) # mutate population
+        yield
+        j = 0
+        while j < fitnesses.shape[1]:
+            fitnesses[i][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual in next generation
+            j += 1
+
+    print(fitnesses)
+    plot_fitnesses(fitnesses)
 
 if __name__=='__main__':
     """ PARAMETERS """
@@ -73,23 +95,6 @@ if __name__=='__main__':
     """ PARAMETERS """
 
     """ SIMULATION """
-    # initialize population
-    population = np.random.normal(1.5, 0.5, size=(N, n)) # random population
-    fitnesses = np.zeros((generations, N))
-    j = 0
-    while j < fitnesses.shape[1]:
-        fitnesses[0][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual
-        j += 1
-
-    for i in range(generations):
-        mutations, parents = next_gen(population, fitness)
-        population = np.add(population, mutations) # mutate population
-        j = 0
-        while j < fitnesses.shape[1]:
-            fitnesses[i][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual in next generation
-            j += 1
-        # fitnesses[i] *= 2
-
-    print(fitnesses)
-    plot_fitnesses()
-
+    with bar(generations) as b:
+        for i in simulation(n, a, Q, s0, r, sigma, x, e, m, N, mu, fitness, generations):
+            b()
