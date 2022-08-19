@@ -64,6 +64,7 @@ def simulation(n, a, Q, s0, r, sigma, x, e, m, N, mu, fitness, generations):
         mutations, parents = next_gen(population, fitness)
         population = np.add(population, mutations) # mutate population
         yield
+        print(population)
         j = 0
         while j < fitnesses.shape[1]:
             fitnesses[i][j] = fitness(np.linalg.norm(population[j])) # calculate fitness of each individual in next generation
@@ -85,7 +86,7 @@ if __name__=='__main__':
         return r * np.sqrt(n) / (2 * d)
     e = 1.0 # epistasis defined as big long expression from table, click URL in comment above
     m = 1 # pleiotropy, number of phenotypes affected by each mutation
-    N = 10 ** 4 # number of individuals in population
+    N = 10 ** 3 # number of individuals in population
     mu = 10 ** -3 # mutation rate
 
     def fitness(phenotype): # fitness function from paper (input is distance from fitness peak)
