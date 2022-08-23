@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="parent selection first try">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="last commit for aug 18 before I close PyCharm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fisher-geometric-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fisher-geometric-model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" afterDir="false" />
@@ -215,28 +215,8 @@
       <workItem from="1659112482229" duration="10715000" />
       <workItem from="1659129356415" duration="10617000" />
       <workItem from="1659270483903" duration="7577000" />
-      <workItem from="1660846871207" duration="2338000" />
-    </task>
-    <task id="LOCAL-00004" summary="creation">
-      <created>1653071557053</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1653071557053</updated>
-    </task>
-    <task id="LOCAL-00005" summary="derivation of avg offspring based on fitness">
-      <created>1653505989559</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1653505989559</updated>
-    </task>
-    <task id="LOCAL-00006" summary="more shtuff">
-      <created>1653539182572</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1653539182573</updated>
+      <workItem from="1660846871207" duration="6822000" />
+      <workItem from="1660928928332" duration="3204000" />
     </task>
     <task id="LOCAL-00007" summary="more shtuff">
       <created>1653579405809</created>
@@ -560,7 +540,28 @@
       <option name="project" value="LOCAL" />
       <updated>1660791826098</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="mutate population and select parents weighted for fitness with replacement">
+      <created>1660849722664</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1660849722669</updated>
+    </task>
+    <task id="LOCAL-00054" summary="evolve backwards and progress bar">
+      <created>1660854400805</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1660854400805</updated>
+    </task>
+    <task id="LOCAL-00055" summary="last commit for aug 18 before I close PyCharm">
+      <created>1660891281102</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1660891281103</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,9 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="complete organism and implement naming for mutations and organisms" />
-    <MESSAGE value="Simulation runner" />
-    <MESSAGE value="Write more but mainly committing because afk soon" />
     <MESSAGE value="plotting average fitnesses" />
     <MESSAGE value="meet on thursday" />
     <MESSAGE value="beginning Lineage-baesd model" />
@@ -616,21 +614,13 @@
     <MESSAGE value="parameters and data storage of FGM" />
     <MESSAGE value="mutate population" />
     <MESSAGE value="parent selection first try" />
-    <option name="LAST_COMMIT_MESSAGE" value="parent selection first try" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/fisher-geometric-model.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="mutate population and select parents weighted for fitness with replacement" />
+    <MESSAGE value="evolve backwards and progress bar" />
+    <MESSAGE value="last commit for aug 18 before I close PyCharm" />
+    <option name="LAST_COMMIT_MESSAGE" value="last commit for aug 18 before I close PyCharm" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$fisher_geometric_model.coverage" NAME="fisher-geometric-model Coverage Results" MODIFIED="1660849261562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$fisher_geometric_model.coverage" NAME="fisher-geometric-model Coverage Results" MODIFIED="1660853676745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$full_organism_model.coverage" NAME="full-organism-model Coverage Results" MODIFIED="1656633540545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$simple_fitness_tracking.coverage" NAME="simple-fitness-tracking Coverage Results" MODIFIED="1656623963006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$linear_analysis_fitness_fixation.coverage" NAME="linear-analysis-fitness-fixation Coverage Results" MODIFIED="1659218698280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
