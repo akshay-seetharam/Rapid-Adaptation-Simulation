@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="last commit for aug 18 before I close PyCharm">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="debug selection and mutation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fisher-geometric-model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fisher-geometric-model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/fitnesses-fgm.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,14 +215,8 @@
       <workItem from="1659129356415" duration="10617000" />
       <workItem from="1659270483903" duration="7577000" />
       <workItem from="1660846871207" duration="6822000" />
-      <workItem from="1660928928332" duration="3204000" />
-    </task>
-    <task id="LOCAL-00007" summary="more shtuff">
-      <created>1653579405809</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1653579405811</updated>
+      <workItem from="1660928928332" duration="3219000" />
+      <workItem from="1661215553987" duration="1871000" />
     </task>
     <task id="LOCAL-00008" summary="lineage tracing">
       <created>1653579947332</created>
@@ -561,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660891281103</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="debug selection and mutation">
+      <created>1660933351719</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1660933351721</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="plotting average fitnesses" />
     <MESSAGE value="meet on thursday" />
     <MESSAGE value="beginning Lineage-baesd model" />
     <MESSAGE value="add fitness function in Lineage" />
@@ -617,7 +616,8 @@
     <MESSAGE value="mutate population and select parents weighted for fitness with replacement" />
     <MESSAGE value="evolve backwards and progress bar" />
     <MESSAGE value="last commit for aug 18 before I close PyCharm" />
-    <option name="LAST_COMMIT_MESSAGE" value="last commit for aug 18 before I close PyCharm" />
+    <MESSAGE value="debug selection and mutation" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug selection and mutation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$fisher_geometric_model.coverage" NAME="fisher-geometric-model Coverage Results" MODIFIED="1660853676745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
