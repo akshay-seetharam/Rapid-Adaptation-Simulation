@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis = 1))
+    return np.average(np.sum(genome, axis=1))
 
 def horizontal_gene_transfer(genome):
     #TODO Implementation (ask for bio details)
@@ -10,7 +10,19 @@ def horizontal_gene_transfer(genome):
 
 def reproduce(genome):
     #TODO Reproduce based on fitness
+    new_genome = np.zeros_like(genome)
+    for i in range(new_genome.shape[0]):
+        weights = np.exp(np.sum(genome, axis=1))
+        weights /= np.sum(weights)
+        new_genome[i] = genome[np.random.choice(genome.shape[0], p=weights)]
+        # weighted average with exponential of fitnesses
     #TODO Mutate some
+    global mutation_prob
+    global population
+    num_mutants = int(population * mutation_prob)
+    for i in range(num_mutants):
+        new_polymorphic_site =
+        new_genome.concatenate((new_genome, new_polymorphic_site), axis=1)
     return genome
 
 def prune_to_population(genome):
@@ -20,7 +32,7 @@ def prune_to_population(genome):
 def reproductive_update(genome):
     genome = horizontal_gene_transfer(genome)
     genome = reproduce(genome)
-    genome = prune_to_population(genome, N)
+    genome = prune_to_population(genome)
     return genome
 
 if __name__ == '__main__':
@@ -48,5 +60,7 @@ if __name__ == '__main__':
     plt.xlabel('Generation')
     plt.ylabel('Fitness')
     plt.show()
+
+    print(genome)
     
 

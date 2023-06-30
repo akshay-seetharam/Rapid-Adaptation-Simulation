@@ -212,13 +212,6 @@
       <workItem from="1659129356415" duration="10617000" />
       <workItem from="1659270483903" duration="7577000" />
     </task>
-    <task id="LOCAL-00005" summary="derivation of avg offspring based on fitness">
-      <created>1653505989559</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1653505989559</updated>
-    </task>
     <task id="LOCAL-00006" summary="more shtuff">
       <created>1653539182572</created>
       <option name="number" value="00006" />
@@ -555,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687852079303</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="more skeleton in transfer-too.py">
+      <created>1687907002254</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1687907002254</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
