@@ -11,9 +11,9 @@ def horizontal_gene_transfer(genome):
 def reproduce(genome):
     #TODO Reproduce based on fitness
     new_genome = np.zeros_like(genome)
+    weights = np.exp(np.sum(genome, axis=1))
+    weights /= np.sum(weights)
     for i in range(new_genome.shape[0]):
-        weights = np.exp(np.sum(genome, axis=1))
-        weights /= np.sum(weights)
         new_genome[i] = genome[np.random.choice(genome.shape[0], p=weights)]
         # weighted average with exponential of fitnesses
     #TODO Mutate some
