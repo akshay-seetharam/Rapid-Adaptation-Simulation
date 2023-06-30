@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1))
+    return np.average(np.sum(genome, axis=1) / genome.shape[1])
 
 def horizontal_gene_transfer(genome):
     #TODO Implementation (ask for bio details)
@@ -47,13 +47,16 @@ if __name__ == '__main__':
     for i in range(population):
         genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
 
-    fitnesses = [average_fitness(genome)]
+    old_fitness = average_fitness(genome)
+    fitness_deltas = []
 
     for gen in range(generations):
         genome = reproductive_update(genome)
-        fitnesses.append(average_fitness(genome))
+        new_fitness = average_fitness(genome)
+        fitness_deltas.append(new_fitness - old_fitness)
+        old_fitness = new_fitness
 
-    plt.plot(range(generations + 1), fitnesses)
+    plt.plot(range(generations), fitness_deltas)
     plt.xlabel('Generation')
     plt.ylabel('Fitness')
     plt.show()
