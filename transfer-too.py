@@ -21,18 +21,15 @@ def reproduce(genome):
     global population
     num_mutants = int(population * mutation_prob)
     for i in range(num_mutants):
-        new_polymorphic_site =
-        new_genome.concatenate((new_genome, new_polymorphic_site), axis=1)
-    return genome
-
-def prune_to_population(genome):
-    #TODO Prune to
-    return genome
+        print('Mutating')
+        new_polymorphic_site = np.zeros((population, 1))
+        new_polymorphic_site[np.random.choice(population)][0] = 1
+        new_genome = np.concatenate((new_genome, new_polymorphic_site), axis=1) # debug this line
+    return new_genome
 
 def reproductive_update(genome):
     genome = horizontal_gene_transfer(genome)
     genome = reproduce(genome)
-    genome = prune_to_population(genome)
     return genome
 
 if __name__ == '__main__':
@@ -42,7 +39,7 @@ if __name__ == '__main__':
     U_b = 0.1
     activated_proportion = 0.05
     generations = 20
-    mutation_prob = 10 ** -4
+    mutation_prob = 10 ** -3
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
