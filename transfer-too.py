@@ -2,21 +2,20 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1) / genome.shape[1])
+    return np.average(np.sum(genome, axis=1) / genome.shape[1]) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
 
 def horizontal_gene_transfer(genome):
     #TODO Implementation (ask for bio details)
+    # source retains allele, recipient receives allele from source
     return genome
 
 def reproduce(genome):
-    #TODO Reproduce based on fitness
     new_genome = np.zeros_like(genome)
     weights = np.exp(np.sum(genome, axis=1))
     weights /= np.sum(weights)
     for i in range(new_genome.shape[0]):
         new_genome[i] = genome[np.random.choice(genome.shape[0], p=weights)]
         # weighted average with exponential of fitnesses
-    #TODO Mutate some
     global mutation_prob
     global population
     num_mutants = int(population * mutation_prob)
@@ -25,6 +24,10 @@ def reproduce(genome):
         new_polymorphic_site = np.zeros((population, 1))
         new_polymorphic_site[np.random.choice(population)][0] = 1
         new_genome = np.concatenate((new_genome, new_polymorphic_site), axis=1) # debug this line
+
+    new_genome = np.delete(new_genome, np.argwhere(np.all(new_genome[..., :] == 0, axis=0)), axis=1)
+    # stop tracking loci that are no longer polymorphic
+
     return new_genome
 
 def reproductive_update(genome):
@@ -38,7 +41,7 @@ if __name__ == '__main__':
     polymorphic_sites = 5
     U_b = 0.1
     activated_proportion = 0.05
-    generations = 20
+    generations = 50
     mutation_prob = 10 ** -3
     ### PARAMS ###
 
@@ -58,9 +61,10 @@ if __name__ == '__main__':
 
     plt.plot(range(generations), fitness_deltas)
     plt.xlabel('Generation')
-    plt.ylabel('Fitness')
+    plt.ylabel('Delta Fitness')
+    plt.title('Change in Fitness by Generation')
     plt.show()
 
-    print(genome)
+    print(genome, genome.shape)
     
 
