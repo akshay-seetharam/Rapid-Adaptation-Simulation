@@ -4,8 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="changed fitness tracking to fitness delta tracking by generation">
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="added comments clarifying next todos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_11.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_14.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_15.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_17.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_18.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_19.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_20.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_21.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_21.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_22.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_22.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_23.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_23.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_24.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_25.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_25.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_26.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_26.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_27.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_27.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_28.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_28.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_29.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/plot_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/plot_9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transfer-too.py" beforeDir="false" afterPath="$PROJECT_DIR$/transfer-too.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,13 +241,6 @@
       <workItem from="1659112482229" duration="10715000" />
       <workItem from="1659129356415" duration="10617000" />
       <workItem from="1659270483903" duration="7577000" />
-    </task>
-    <task id="LOCAL-00010" summary="lineage tracing plots work now">
-      <created>1653601944139</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1653601944140</updated>
     </task>
     <task id="LOCAL-00011" summary="lineage tracing plots work now">
       <created>1653602767875</created>
@@ -555,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688139186063</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="added comments clarifying next todos">
+      <created>1688192446427</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1688192446427</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="beginning Lineage-baesd model" />
     <MESSAGE value="add fitness function in Lineage" />
     <MESSAGE value="add reproduce, gen_pop, get_gens function in Lineage" />
     <MESSAGE value="safety commit" />
@@ -611,7 +640,8 @@
     <MESSAGE value="moved lines outside of loop" />
     <MESSAGE value="implemented reproduction and mutation fully" />
     <MESSAGE value="changed fitness tracking to fitness delta tracking by generation" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed fitness tracking to fitness delta tracking by generation" />
+    <MESSAGE value="added comments clarifying next todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comments clarifying next todos" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$fisher_geometric_model.coverage" NAME="fisher-geometric-model Coverage Results" MODIFIED="1660762036294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

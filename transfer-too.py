@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1) / genome.shape[1]) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
+    return np.average(np.sum(genome, axis=1)) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
 
 def horizontal_gene_transfer(genome):
     #TODO Implementation (ask for bio details)
