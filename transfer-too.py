@@ -1,13 +1,22 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import random
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1)) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
+    return np.average(np.sum(genome, axis=1) * U_b) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
 
 def horizontal_gene_transfer(genome):
-    #TODO Implementation (ask for bio details)
     # source retains allele, recipient receives allele from source
-    return genome
+    new_genome = genome.copy()
+    for _ in range(num_recombinations):
+        donor = random.choice((0, genome.shape[0] - 1))
+        locus = random.choice((0, genome.shape[1] - 1))
+        recipient = donor
+        while recipient == donor:
+            recipient = random.choice((0, genome.shape[0] - 1))
+        new_genome[recipient][locus] = new_genome[donor][locus]
+
+    return new_genome
 
 def reproduce(genome):
     new_genome = np.zeros_like(genome)
@@ -39,10 +48,11 @@ if __name__ == '__main__':
     ### PARAMS ##
     population = 1000
     polymorphic_sites = 5
-    U_b = 0.1
+    U_b = 0.01
     activated_proportion = 0.05
-    generations = 50
+    generations = 100
     mutation_prob = 10 ** -3
+    num_recombinations = 1 #TODO on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
@@ -52,18 +62,31 @@ if __name__ == '__main__':
 
     old_fitness = average_fitness(genome)
     fitness_deltas = []
+    fitness_progression = []
 
     for gen in range(generations):
         genome = reproductive_update(genome)
         new_fitness = average_fitness(genome)
+        fitness_progression.append(new_fitness)
         fitness_deltas.append(new_fitness - old_fitness)
         old_fitness = new_fitness
+        print(f'Done with generation {gen}')
 
-    plt.plot(range(generations), fitness_deltas)
-    plt.xlabel('Generation')
-    plt.ylabel('Delta Fitness')
-    plt.title('Change in Fitness by Generation')
-    plt.show()
+    plt.figure(figsize=(40, 40))
+
+    fig, ax = plt.subplots(nrows=1, ncols=2)
+
+    ax[0].plot(range(generations), fitness_deltas, color='red')
+    ax[0].set_xlabel('Generation')
+    ax[0].set_ylabel('Delta Fitness')
+    ax[0].set_title('Change in Fitness by Generation')
+
+    ax[1].plot(range(generations), fitness_progression, color='red')
+    ax[1].set_xlabel('Generation')
+    ax[1].set_ylabel('Fitness')
+    ax[1].set_title('Fitness by Generation')
+
+    plt.savefig(f'{num_recombinations} recombinations.png')
 
     print(genome, genome.shape)
     
