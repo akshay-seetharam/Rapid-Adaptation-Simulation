@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="added hgt">
-      <change afterPath="$PROJECT_DIR$/10 recombinations.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/100 recombinations.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0 recombinations.png" beforeDir="false" afterPath="$PROJECT_DIR$/0 recombinations.png" afterDir="false" />
+    <list default="true" id="dfdd0601-ceae-4001-ad9b-e23203fd9b47" name="Changes" comment="homogeneous starting population">
+      <change beforePath="$PROJECT_DIR$/100 recombinations.png" beforeDir="false" afterPath="$PROJECT_DIR$/100 recombinations.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transfer-too.py" beforeDir="false" afterPath="$PROJECT_DIR$/transfer-too.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,13 +211,6 @@
       <workItem from="1659112482229" duration="10715000" />
       <workItem from="1659129356415" duration="10617000" />
       <workItem from="1659270483903" duration="7577000" />
-    </task>
-    <task id="LOCAL-00013" summary="added 'simple-fitness-tracking.py' for only tracking fitnesses&#10;TODO: track which mutations are taking over&#10;TO ASK: randomness, poisson random sample clarification, clarification of exponential growth">
-      <created>1654837618975</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1654837618975</updated>
     </task>
     <task id="LOCAL-00014" summary="simple fitness tracking w/o randomness">
       <created>1655078128587</created>
@@ -558,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688593570418</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="homogeneous starting population">
+      <created>1690436486008</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1690436486008</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="safety commit" />
     <MESSAGE value="write reproduce and beginning of mutate methods in Lineage" />
     <MESSAGE value="add TODO to mutate method in lineage" />
     <MESSAGE value="mutate phenotype" />
@@ -614,7 +610,8 @@
     <MESSAGE value="added comments clarifying next todos" />
     <MESSAGE value="changed fitness function to get workable fitness increasing results" />
     <MESSAGE value="added hgt" />
-    <option name="LAST_COMMIT_MESSAGE" value="added hgt" />
+    <MESSAGE value="homogeneous starting population" />
+    <option name="LAST_COMMIT_MESSAGE" value="homogeneous starting population" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rapid_adaptation_ipynb$fisher_geometric_model.coverage" NAME="fisher-geometric-model Coverage Results" MODIFIED="1660762036294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

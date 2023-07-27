@@ -46,19 +46,19 @@ def reproductive_update(genome):
 
 if __name__ == '__main__':
     ### PARAMS ##
-    population = 10**5
+    population = 10**4
     polymorphic_sites = 5
     U_b = 0.01
-    # activated_proportion = 0.01
+    activated_proportion = 0.01
     generations = 100
     mutation_prob = 10 ** -3
-    num_recombinations = 100 #TODO on order of beneficial mutation rate
+    num_recombinations = 100 # on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
 
-    # for i in range(population):
-    #     genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
+    for i in range(population):
+         genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
 
     old_fitness = average_fitness(genome)
     fitness_deltas = []
