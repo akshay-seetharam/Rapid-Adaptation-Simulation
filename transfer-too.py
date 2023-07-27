@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import random
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1) * U_b) #TODO ask about what an appropriate function here is, because right now there's no consistent fitness improvement
+    return np.average(np.sum(genome, axis=1) * U_b)
 
 def horizontal_gene_transfer(genome):
     # source retains allele, recipient receives allele from source
@@ -46,19 +46,19 @@ def reproductive_update(genome):
 
 if __name__ == '__main__':
     ### PARAMS ##
-    population = 1000
+    population = 10**5
     polymorphic_sites = 5
     U_b = 0.01
-    activated_proportion = 0.05
+    # activated_proportion = 0.01
     generations = 100
     mutation_prob = 10 ** -3
-    num_recombinations = 1 #TODO on order of beneficial mutation rate
+    num_recombinations = 100 #TODO on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
 
-    for i in range(population):
-        genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
+    # for i in range(population):
+    #     genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
 
     old_fitness = average_fitness(genome)
     fitness_deltas = []
