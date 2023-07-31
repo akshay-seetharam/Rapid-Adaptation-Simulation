@@ -14,7 +14,7 @@ class PopulationGenome():
         self.genome = np.zeros((population, polymorphic_sites))
 
         for i in range(population):
-            genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
+            self.genome[i] = np.array([np.random.binomial(1, self.activated_proportion) for _ in range(self.polymorphic_sites)])
 
         self.fitness_deltas = []
         self.fitness_progression = []
@@ -46,7 +46,7 @@ class PopulationGenome():
         for _ in range(num_mutants):
             print('Mutating')
             new_polymorphic_site = np.zeros((self.population, 1))
-            new_polymorphic_site[np.random.choice(population)][0] = 1
+            new_polymorphic_site[np.random.choice(self.population)][0] = 1
             new_genome = np.concatenate((new_genome, new_polymorphic_site), axis=1)
 
         new_genome = np.delete(new_genome, np.argwhere(np.all(new_genome[..., :] == 0, axis=0)), axis=1)
@@ -55,8 +55,8 @@ class PopulationGenome():
         return new_genome
 
     def reproductive_update(self):
-        genome = horizontal_gene_transfer(self.genome)
-        genome = reproduce(genome)
+        genome = self.horizontal_gene_transfer()
+        genome = self.reproduce()
         self.genome = genome
 
     def simulate(self, generations, plot=True):
@@ -95,5 +95,5 @@ if __name__=='__main__':
 
     num_recombinations_list = [0, 1, 10, 100, 1000]
     for i in num_recombinations_list:
-        population = new PopulationGenome(10**4, 1, 0.01, 0.01, 10**-3, i)
-        population.simulate()
+        population = PopulationGenome(10**4, 1, 0.01, 0.01, 10**-3, i)
+        population.simulate(500)
