@@ -50,9 +50,9 @@ if __name__ == '__main__':
     polymorphic_sites = 5
     U_b = 0.01
     activated_proportion = 0.01
-    generations = 100
+    generations = 1000
     mutation_prob = 10 ** -3
-    num_recombinations = 100 # on order of beneficial mutation rate
+    num_recombinations = 10 # on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
