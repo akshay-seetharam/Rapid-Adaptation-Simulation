@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import random
+# from alive_progress import alive_bar
 
 class PopulationGenome():
     def __init__(self, population, polymorphic_sites, S_b, activated_proportion, mutation_prob, num_recombinations=None):
@@ -26,11 +27,11 @@ class PopulationGenome():
         # source retains allele, recipient receives allele from source
         new_genome = self.genome.copy()
         for _ in range(self.num_recombinations):
-            donor = random.choice((0, genome.shape[0] - 1))
-            locus = random.choice((0, genome.shape[1] - 1))
+            donor = random.choice((0, self.genome.shape[0] - 1))
+            locus = random.choice((0, self.genome.shape[1] - 1))
             recipient = donor
             while recipient == donor:
-                recipient = random.choice((0, genome.shape[0] - 1))
+                recipient = random.choice((0, self.genome.shape[0] - 1))
             new_genome[recipient][locus] = new_genome[donor][locus]
 
         return new_genome
@@ -58,6 +59,7 @@ class PopulationGenome():
         genome = self.horizontal_gene_transfer()
         genome = self.reproduce()
         self.genome = genome
+        # self.histogram()
 
     def simulate(self, generations, plot=True):
         for gen in range(generations):
@@ -85,15 +87,20 @@ class PopulationGenome():
 
         print(self.genome, self.genome.shape)
 
+    def histogram(self):
+        plt.figure(figsize=(60, 60))
+        plt.hist(np.sum(self.genome, axis=1))
+        plt.savefig(f'{self.num_recombinations} recombinations, {len(self.fitness_deltas)} generations, histogram')
 
 if __name__=='__main__':
     print('Hello Transfer Three World')
-    #TODO modifying recombination rate with epistasis
-    #TODO environmental pressure?
-    #TODO cmoparison to meiotic theory
+    #TODO modifying recombination rate with a changing rate, tied to each lineage
+    #TODO environmental pressure? probably too hard
+    #TODO comparison to meiotic theory
     #TODO read paper from Good & Ferrare https://www.biorxiv.org/content/10.1101/2023.07.12.548717v1.full.pdf
 
     num_recombinations_list = [0, 1, 10, 100, 1000]
     for i in num_recombinations_list:
         population = PopulationGenome(10**4, 1, 0.01, 0.01, 10**-3, i)
-        population.simulate(500)
+        population.simulate(100)
+        # population.histogram()
