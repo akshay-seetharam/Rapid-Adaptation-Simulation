@@ -94,9 +94,9 @@ class PopulationGenome():
 
 if __name__=='__main__':
     print('Hello Transfer Three World')
-    #TODO modifying recombination rate with a changing rate, tied to each lineage
+    #TODO modifying recombination rate with a changing rate, tied to a lineage once it develops
     #TODO environmental pressure? probably too hard
-    #TODO comparison to meiotic theory
+    #TODO comparison to meiotic theory (do not simulate)
     #TODO read paper from Good & Ferrare https://www.biorxiv.org/content/10.1101/2023.07.12.548717v1.full.pdf
 
     num_recombinations_list = [0, 1, 10, 100, 1000]

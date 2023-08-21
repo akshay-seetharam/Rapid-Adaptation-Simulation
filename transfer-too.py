@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import random
+import sys
 
 def average_fitness(genome):
     return np.average(np.sum(genome, axis=1) * U_b)
@@ -47,18 +48,20 @@ def reproductive_update(genome):
 if __name__ == '__main__':
     ### PARAMS ##
     population = 10**4
-    polymorphic_sites = 5
+    polymorphic_sites = 1
     U_b = 0.01
     activated_proportion = 0.01
-    generations = 1000
+    generations = 100
     mutation_prob = 10 ** -3
-    num_recombinations = 10 # on order of beneficial mutation rate
+    num_recombinations = 100 # on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
 
     for i in range(population):
-         genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
+        # genome[i] = np.array([np.random.binomial(1, activated_proportion) for _ in range(polymorphic_sites)])
+        genome[i] = 0
+    genome[0][0] = 1
 
     old_fitness = average_fitness(genome)
     fitness_deltas = []
@@ -70,7 +73,13 @@ if __name__ == '__main__':
         fitness_progression.append(new_fitness)
         fitness_deltas.append(new_fitness - old_fitness)
         old_fitness = new_fitness
-        print(f'Done with generation {gen}')
+        print(f'Done with generation {gen}', sum(genome[:, 0]/population))
+        if sum(genome[:, 0]) == population:
+            print('Fixed')
+            sys.exit()
+        elif sum(genome[:, 0]) == 0:
+            print('Extinct')
+            sys.exit()
 
     plt.figure(figsize=(40, 40))
 
@@ -89,5 +98,4 @@ if __name__ == '__main__':
     plt.savefig(f'{num_recombinations} recombinations.png')
 
     print(genome, genome.shape)
-    
 
