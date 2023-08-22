@@ -2,9 +2,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 import random
 import sys
+# from pydub import AudioSegment
+# from pydub.playback import play
+
 
 def average_fitness(genome):
-    return np.average(np.sum(genome, axis=1) * U_b)
+    return np.average(np.sum(genome, axis=1) * S_b)
 
 def horizontal_gene_transfer(genome):
     # source retains allele, recipient receives allele from source
@@ -35,6 +38,10 @@ def reproduce(genome):
         new_polymorphic_site[np.random.choice(population)][0] = 1
         new_genome = np.concatenate((new_genome, new_polymorphic_site), axis=1) # debug this line
 
+    if sum(new_genome[:, 0]) == 0:
+        print('Extinction')
+        sys.exit(0)
+
     new_genome = np.delete(new_genome, np.argwhere(np.all(new_genome[..., :] == 0, axis=0)), axis=1)
     # stop tracking loci that are no longer polymorphic
 
@@ -49,11 +56,11 @@ if __name__ == '__main__':
     ### PARAMS ##
     population = 10**4
     polymorphic_sites = 1
-    U_b = 0.01
+    S_b = 0.01
     activated_proportion = 0.01
     generations = 100
     mutation_prob = 10 ** -3
-    num_recombinations = 100 # on order of beneficial mutation rate
+    num_recombinations = 1 # on order of beneficial mutation rate
     ### PARAMS ###
 
     genome = np.zeros((population, polymorphic_sites))
@@ -66,6 +73,7 @@ if __name__ == '__main__':
     old_fitness = average_fitness(genome)
     fitness_deltas = []
     fitness_progression = []
+    fixation_prop = [0]
 
     for gen in range(generations):
         genome = reproductive_update(genome)
@@ -73,9 +81,16 @@ if __name__ == '__main__':
         fitness_progression.append(new_fitness)
         fitness_deltas.append(new_fitness - old_fitness)
         old_fitness = new_fitness
-        print(f'Done with generation {gen}', sum(genome[:, 0]/population))
+        print(f'Done with generation {gen}', round(sum(genome[:, 0]/population)*1000)/1000)
+        fixation_prop.append(sum(genome[:, 0]/population))
+        plt.plot(fixation_prop)
+        plt.yscale('log')
+        plt.title('Fixation by Generation')
+        plt.savefig('fixation_proportion.png')
         if sum(genome[:, 0]) == population:
             print('Fixed')
+            # song = AudioSegment.from_wav("/Users/akshay-seetharam/Downloads/perfect-cadence.wav")
+            # play(song)
             sys.exit()
         elif sum(genome[:, 0]) == 0:
             print('Extinct')
